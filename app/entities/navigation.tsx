@@ -1,7 +1,10 @@
 import { Language, LogoMentohub, Search } from 'assets/icons'
+import { useTranslation } from 'react-i18next'
+export let handle = { i18n: 'home' }
 
 export default function Navigation() {
-  // const isAuth = true
+  let { t } = useTranslation('home')
+
   return (
     <div className="fixed top-0 left-0 z-[999] flex w-full flex-row py-auto h-[68px] justify-between gap-y-2 bg-white font-semibold text-black">
       <div className="my-auto flex flex-row gap-10 items-center ml-[210px]">
@@ -11,7 +14,9 @@ export default function Navigation() {
           alt="Blog.sol Logo"
         />
 
-        <a href='#' className="my-auto text-sm font-medium font-manrope">Курси</a>
+        <a href="#" className="my-auto text-sm font-medium font-manrope">
+          {t('courses')}
+        </a>
 
         <form className="w-[431px] border-b-[1.5px] flex flex-row gap-3 pb-1 border-[#B5B7F6]">
           <button type="submit">
@@ -30,14 +35,14 @@ export default function Navigation() {
         </form>
       </div>
       <div className="my-auto flex flex-row gap-10 items-center mr-[210px]">
-        <a href='#' className="my-auto text-sm font-medium font-manrope">
+        <a href="#" className="my-auto text-sm font-medium font-manrope">
           Корпоративна освіта
         </a>
-        <a href='#' className="my-auto text-sm font-medium font-manrope">
+        <a href="#" className="my-auto text-sm font-medium font-manrope">
           Стати ментором
         </a>
         <button className="border-2 border-[#454BE9] p-[10px] text-sm font-manrope font-medium w-[130px] rounded-3xl">
-          Вхід
+          {t('sign-in')}
         </button>
         <button>
           <img
