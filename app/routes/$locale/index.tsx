@@ -66,7 +66,7 @@ export default function Index() {
           </a>
         </li>
       </ul>
-      <a href={changePathnameLocale(SupportedLocale.UK)}>change lng</a>
+      <a href={changePathnameLocale(SupportedLocale.UA)}>change lng</a>
     </div>
   )
 }

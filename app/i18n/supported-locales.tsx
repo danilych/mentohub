@@ -1,11 +1,11 @@
 export enum SupportedLocale {
   EN = 'en',
-  UK = 'uk',
+  UA = 'ua',
 }
 
 export enum localeNumbersSeparators {
   'en' = ',',
-  'uk' = ',',
+  'ua' = ',',
 }
 
 export const DEFAULT_LOCALE = SupportedLocale.EN
