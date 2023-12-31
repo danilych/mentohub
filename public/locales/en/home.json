@@ -2,5 +2,9 @@
     "sign-in": "Sign-in",
     "courses": "Courses",
     "corporate-education": "Corporate education",
-    "become-mentor": "Become a mentor"
+    "become-mentor": "Become a mentor",
+    "languages": {
+        "english": "English",
+        "ukrainian": "Ukrainian"
+    }
 }
