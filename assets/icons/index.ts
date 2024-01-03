@@ -1,3 +1,7 @@
 export { default as LogoMentohub } from './logo-mentohub.svg'
 export { default as Search } from './search.svg'
 export { default as Language } from './language.svg'
+export { default as Facebook } from './facebook.svg'
+export { default as Instagram } from './instagram.svg'
+export { default as Telegram } from './telegram.svg'
+export { default as Youtube } from './youtube.svg'

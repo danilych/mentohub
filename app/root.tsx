@@ -18,6 +18,7 @@ import {
 
 import stylesheet from '~/tailwind.css'
 import Navigation from './entities/navigation'
+import Footer from './entities/footer'
 
 import { useChangeLanguage } from 'remix-i18next'
 import { useTranslation } from 'react-i18next'
@@ -69,6 +70,7 @@ export default function App() {
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
+        <Footer />
       </body>
     </html>
   )
