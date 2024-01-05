@@ -37,6 +37,9 @@ export const loader: LoaderFunction = async ({ request }) => {
 
   return json({
     locale,
+    ENV: {
+      TEST: process.env.TEST,
+    },
   })
 }
 
