@@ -7,55 +7,52 @@ import {
 } from 'assets/icons'
 import { useTranslation } from 'react-i18next'
 import { Link } from '@remix-run/react'
-import useLocalizePathname from '~/i18n/use-localize-pathname'
 import Divider from '~/shared/divider'
 import { Text } from '~/shared/text'
 
 export let handle = { i18n: 'common' }
 
 export default function Footer() {
-  let { t } = useTranslation('common')
-  const localizePathname = useLocalizePathname()
 
   return (
     <div className="flex gap-0 flex-col max-w-[1500px] mb-[42px] mx-auto min-mx-5 min-h-[300px] bg-white font-semibold text-black">
       <div className="flex relative flex-row gap-[218px] pb-[42px]">
         <div className="flex flex-col gap-[13px]">
           <p className="color-[#161616] text-lg leading-[25px] font-semibold not-italic font-manrope">
-            {t('footer.navigation')}
+          Навігація
           </p>
           <div className="flex flex-col gap-4">
-            <Link to={localizePathname('#')}>
-              <Text>{t('footer.courses')}</Text>
+            <Link to='#'>
+              <Text>Курси</Text>
             </Link>
             <Link to="#">
-              <Text>{t('footer.corporate-education')}</Text>
+              <Text>Корпоративна освіта</Text>
             </Link>
             <Link to="#">
-              <Text>{t('footer.become-mentor')}</Text>
+              <Text>Стати ментором</Text>
             </Link>
             <Link to="#">
-              <Text>{t('footer.my-profile')}</Text>
+              <Text>Мій кабінет</Text>
             </Link>
           </div>
         </div>
 
         <div className="flex flex-col gap-[13px]">
           <p className="color-[#161616] text-lg leading-[25px] font-semibold not-italic font-manrope">
-            {t('footer.about-us')}
+          Про нас
           </p>
           <div className="flex flex-col gap-4">
             <Link to="#">
-              <Text>{t('footer.contacts')}</Text>
+              <Text>Контакти</Text>
             </Link>
             <Link to="#">
-              <Text>{t('footer.terms-of-use')}</Text>
+              <Text>Умови використання</Text>
             </Link>
             <Link to="#">
-              <Text>{t('footer.policy-of-privacy')}</Text>
+              <Text>Політика конфіденційності</Text>
             </Link>
             <Link to="#">
-              <Text>{t('footer.cookie-settings')}</Text>
+              <Text>Налаштування файлів cookie</Text>
             </Link>
           </div>
         </div>
@@ -71,7 +68,7 @@ export default function Footer() {
         <Divider />
         <div className="mt-6">
           <div className="absolute left-0">
-            <Link to={localizePathname('/')}>
+            <Link to='/'>
               <img
                 src={LogoMentohub}
                 className="h-[43px] mt-auto"

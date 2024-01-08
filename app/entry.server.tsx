@@ -1,77 +1,37 @@
-import { PassThrough } from 'stream'
-import type { EntryContext } from '@remix-run/node'
-import { Response } from '@remix-run/node'
-import { RemixServer } from '@remix-run/react'
-import isbot from 'isbot'
-import { renderToPipeableStream } from 'react-dom/server'
-import { createInstance } from 'i18next'
-import i18next from './i18n/i18next.server'
-import { I18nextProvider, initReactI18next } from 'react-i18next'
-import FsBackend from 'i18next-fs-backend'
-import { SHARED_I18N_CONFIG } from './i18n/config' // your i18n configuration file
 import { resolve } from 'node:path'
-import { detectLocale } from './i18n/detect-locale'
 
-const ABORT_DELAY = 5_000
+import { RemixServer } from '@remix-run/react'
+import type { EntryContext } from '@remix-run/server-runtime'
+import { renderToString } from 'react-dom/server'
+import type { HandleDataRequestFunction } from '@remix-run/node'
 
 export default async function handleRequest(
   request: Request,
-  responseStatusCode: number,
-  responseHeaders: Headers,
-  remixContext: EntryContext
+  statusCode: number,
+  headers: Headers,
+  context: EntryContext
 ) {
-  let callbackName = isbot(request.headers.get('user-agent'))
-    ? 'onAllReady'
-    : 'onShellReady'
+  const markup = renderToString(
+    <RemixServer context={context} url={request.url} />
+  )
 
-  let instance = createInstance()
-  const lng = detectLocale(request)
-  let ns = i18next.getRouteNamespaces(remixContext)
+  headers.set('Content-Type', 'text/html')
 
-  await instance
-    .use(initReactI18next)
-    .use(FsBackend)
-    .init({
-      ...SHARED_I18N_CONFIG,
-      lng,
-      backend: {
-        loadPath: resolve('./public/locales/{{lng}}/{{ns}}.json'),
-      },
-    })
-
-  return new Promise((resolve, reject) => {
-    let didError = false
-
-    let { pipe, abort } = renderToPipeableStream(
-      <I18nextProvider i18n={instance}>
-        <RemixServer context={remixContext} url={request.url} />
-      </I18nextProvider>,
-      {
-        [callbackName]: () => {
-          let body = new PassThrough()
-
-          responseHeaders.set('Content-Type', 'text/html')
-
-          resolve(
-            new Response(body, {
-              headers: responseHeaders,
-              status: didError ? 500 : responseStatusCode,
-            })
-          )
-
-          pipe(body)
-        },
-        onShellError(error: unknown) {
-          reject(error)
-        },
-        onError(error: unknown) {
-          didError = true
-
-          console.error(error)
-        },
-      }
-    )
-
-    setTimeout(abort, ABORT_DELAY)
+  return new Response('<!DOCTYPE html>' + markup, {
+    status: statusCode,
+    headers: headers,
   })
+}
+
+// Set header Cache-Control for vercel
+export const handleDataRequest: HandleDataRequestFunction = (
+  response: Response
+) => {
+  if (!response.headers.get('Cache-Control')) {
+    response.headers.set(
+      'Cache-Control',
+      'max-age=0, s-maxage=2678400, stale-while-revalidate'
+    )
+  }
+  return response
 }
