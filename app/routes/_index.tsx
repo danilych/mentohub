@@ -5,7 +5,7 @@ import {
 } from '@remix-run/node'
 
 export const meta: V2_MetaFunction = () => {
-  return [{ title: 'New Remix App' }]
+  return [{ title: 'Mentohub | Home' }]
 }
 
 export default function Index() {

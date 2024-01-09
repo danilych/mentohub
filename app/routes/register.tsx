@@ -6,6 +6,10 @@ import {
 import { useLoaderData } from '@remix-run/react'
 import RegisterCard from '~/widgets/register-card'
 
+export const meta: V2_MetaFunction = () => {
+  return [{ title: 'Mentohub | Register' }]
+}
+
 export default function Register() {
   return (
     <div

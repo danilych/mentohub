@@ -6,6 +6,10 @@ import {
 import { useLoaderData } from '@remix-run/react'
 import LoginCard from '~/widgets/login-card'
 
+export const meta: V2_MetaFunction = () => {
+  return [{ title: 'Mentohub | Login' }]
+}
+
 export default function Login() {
   return (
     <div
