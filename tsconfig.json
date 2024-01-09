@@ -1,7 +1,8 @@
 {
-  "include": ["remix.env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["remix.env.d.ts", "**/*.ts", "**/*.tsx", "env.d.ts"],
   "compilerOptions": {
-    "lib": ["DOM", "DOM.Iterable", "ES2019"],
+    "lib": ["DOM", "DOM.Iterable", "ES2020"],
+    "module": "esnext",
     "isolatedModules": true,
     "esModuleInterop": true,
     "jsx": "react-jsx",

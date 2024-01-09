@@ -3,12 +3,19 @@ import {
   type LoaderFunction,
   type V2_MetaFunction,
 } from '@remix-run/node'
+import { useEffect } from 'react'
+import instance from '~/axios'
 
 export const meta: V2_MetaFunction = () => {
   return [{ title: 'Mentohub | Home' }]
 }
 
 export default function Index() {
+  useEffect(() => {
+    console.log(instance)
+    instance.get('/Home/GetMostFamoustCourseList')
+  }, [])
+
   return (
     <div
       className="bg-[#ebffd2] h-screen mt-[68px]"

@@ -1,11 +1,5 @@
 import { cssBundleHref } from '@remix-run/css-bundle'
-import {
-  json,
-  LoaderArgs,
-  type LinksFunction,
-  redirect,
-  LoaderFunction,
-} from '@remix-run/node'
+import { json, type LinksFunction, LoaderFunction } from '@remix-run/node'
 import {
   Links,
   LiveReload,
@@ -20,11 +14,10 @@ import stylesheet from '~/tailwind.css'
 import Navigation from './widgets/navigation'
 import Footer from './widgets/footer'
 
-
-export const loader: LoaderFunction = async ({ request }) => {
+export const loader: LoaderFunction = async () => {
   return json({
     ENV: {
-      TEST: process.env.TEST,
+      AXIOS_URL: process.env.AXIOS_URL,
     },
   })
 }
@@ -39,8 +32,9 @@ export let handle = {
 }
 
 export default function App() {
+  const data = useLoaderData<typeof loader>()
   return (
-    <html lang='ua' className="antialiased">
+    <html lang="ua" className="antialiased">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -54,6 +48,12 @@ export default function App() {
         <Scripts />
         <LiveReload />
         <Footer />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.ENV = ${JSON.stringify(data.ENV)}`,
+          }}
+        />
+        <Scripts />
       </body>
     </html>
   )

@@ -17,4 +17,26 @@ module.exports = {
     v2_normalizeFormMethod: true,
     v2_routeConvention: true,
   },
+
+  serverDependenciesToBundle: [
+    /^rehype.*/,
+    /^remark.*/,
+    /^unified.*/,
+    /^unist.*/,
+    /^hast.*/,
+    /^bail.*/,
+    /^trough.*/,
+    /^mdast.*/,
+    /^micromark.*/,
+    /^decode.*/,
+    /^character.*/,
+    /^property.*/,
+    /^space.*/,
+    /^comma.*/,
+    /^react-markdown$/,
+    /^vfile.*/,
+    /^ccount*/,
+    /^markdown-table*/,
+    /^axios*/,
+]
 };
