@@ -1,9 +1,8 @@
 import { Language, LogoMentohub, Search } from 'assets/icons'
-import { useTranslation } from 'react-i18next'
 import { Link } from '@remix-run/react'
 import { Dropdown } from 'flowbite-react'
-
-export let handle = { i18n: 'home' }
+import TransparentInput from '~/shared/Inputs/transparent-input'
+import TransparentButton from '~/shared/buttons/transapent-button'
 
 export default function Navigation() {
   return (
@@ -30,11 +29,7 @@ export default function Navigation() {
             />
           </button>
 
-          <input
-            type="text"
-            placeholder="Що цікавить?"
-            className="text-[#4E4E51] outline-none focus:border-none text-sm font-manrope font-normal w-full border-0"
-          />
+          <TransparentInput placeholder="Що цікавить?" />
         </form>
       </div>
       <div className="my-auto flex flex-row gap-10 items-center ml-10 mr-[210px]">
@@ -45,9 +40,7 @@ export default function Navigation() {
           Стати ментором
         </a>
         <Link to="/register">
-          <button className="border-2 border-[#454BE9] p-[10px] text-sm font-manrope font-medium w-[130px] rounded-3xl">
-            Вхід
-          </button>
+          <TransparentButton>Вхід</TransparentButton>
         </Link>
 
         <Dropdown label={<img src={Language} />} inline>
