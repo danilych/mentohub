@@ -1,5 +1,5 @@
 import { Text } from '~/shared/Typo/text'
-import FilledButton from '~/shared/buttons/filled-button'
+import FilledButton from '~/shared/Buttons/filled-button'
 import RoundedInput from '~/shared/Inputs/rounded-input'
 
 export let handle = { i18n: 'common' }

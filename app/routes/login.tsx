@@ -4,7 +4,7 @@ import {
   type V2_MetaFunction,
 } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
-import LoginCard from '~/entities/login-card'
+import LoginCard from '~/widgets/login-card'
 
 export default function Login() {
   return (

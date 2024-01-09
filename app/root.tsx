@@ -17,8 +17,8 @@ import {
 } from '@remix-run/react'
 
 import stylesheet from '~/tailwind.css'
-import Navigation from './entities/navigation'
-import Footer from './entities/footer'
+import Navigation from './widgets/navigation'
+import Footer from './widgets/footer'
 
 
 export const loader: LoaderFunction = async ({ request }) => {

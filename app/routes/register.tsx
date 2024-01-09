@@ -4,7 +4,7 @@ import {
   type V2_MetaFunction,
 } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
-import RegisterCard from '~/entities/register-card'
+import RegisterCard from '~/widgets/register-card'
 
 export default function Register() {
   return (

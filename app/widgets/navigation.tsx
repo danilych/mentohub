@@ -1,8 +1,8 @@
-import { Language, LogoMentohub, Search } from 'assets/icons'
+import { LogoMentohub, Search } from 'assets/icons'
 import { Link } from '@remix-run/react'
-import { Dropdown } from 'flowbite-react'
 import TransparentInput from '~/shared/Inputs/transparent-input'
-import TransparentButton from '~/shared/buttons/transapent-button'
+import TransparentButton from '~/shared/Buttons/transparent-button'
+import LanguageDropbox from '~/features/language-dropbox'
 
 export default function Navigation() {
   return (
@@ -43,10 +43,7 @@ export default function Navigation() {
           <TransparentButton>Вхід</TransparentButton>
         </Link>
 
-        <Dropdown label={<img src={Language} />} inline>
-          <Dropdown.Item href="#">Українська</Dropdown.Item>
-          <Dropdown.Item href="#">Англійська</Dropdown.Item>
-        </Dropdown>
+        <LanguageDropbox />
       </div>
     </div>
   )
