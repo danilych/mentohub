@@ -1,9 +1,7 @@
-import clsx from 'clsx'
-import React, { HTMLAttributes, ReactNode } from 'react'
+import { ReactNode } from 'react'
 
 interface Props {
   children?: ReactNode
-  // className?: string
 }
 
 export function Text({ children}: Props) {

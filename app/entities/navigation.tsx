@@ -33,7 +33,7 @@ export default function Navigation() {
           <input
             type="text"
             placeholder="Що цікавить?"
-            className="text-[#4E4E51] outline-none text-sm font-manrope font-normal w-full border-0"
+            className="text-[#4E4E51] outline-none focus:border-none text-sm font-manrope font-normal w-full border-0"
           />
         </form>
       </div>

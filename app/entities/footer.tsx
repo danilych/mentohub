@@ -8,7 +8,7 @@ import {
 import { useTranslation } from 'react-i18next'
 import { Link } from '@remix-run/react'
 import Divider from '~/shared/divider'
-import { Text } from '~/shared/text'
+import { Text } from '~/shared/Typo/text'
 
 export let handle = { i18n: 'common' }
 
