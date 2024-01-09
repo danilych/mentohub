@@ -2,8 +2,6 @@ import { Text } from '~/shared/Typo/text'
 import FilledButton from '~/shared/Buttons/filled-button'
 import RoundedInput from '~/shared/Inputs/rounded-input'
 
-export let handle = { i18n: 'common' }
-
 export default function LoginCard() {
   return (
     <div className="flex gap-0 flex-col w-[621px] h-[440px] bg-white font-semibold rounded-[20px] shadow-lg absolute m-auto top-0 right-0 bottom-0 left-0 text-black">
