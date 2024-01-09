@@ -6,7 +6,7 @@ export let handle = { i18n: 'common' }
 
 export default function RegisterCard() {
   return (
-    <div className="flex gap-0 flex-col w-[621px] h-[728px] bg-white font-semibold rounded-[20px] absolute m-auto top-0 right-0 bottom-0 left-0 text-black">
+    <div className="flex gap-0 flex-col w-[621px] h-[728px] bg-white pb-[42px] font-semibold rounded-[20px] shadow-lg absolute m-auto top-0 right-0 bottom-0 left-0 text-black">
       <p className="text-center mb-6 text-[#1F1F1F] font-semibold text-2xl font-manrope mt-[42px]">
         Реєстрація
       </p>
