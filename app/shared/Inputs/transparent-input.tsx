@@ -5,7 +5,7 @@ interface Props {
   placeholder?: string
 }
 
-export default function TransparentInput({ className, placeholder }: Props) {
+export function TransparentInput({ className, placeholder }: Props) {
   return (
     <input
       type="text"

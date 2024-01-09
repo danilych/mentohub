@@ -5,7 +5,7 @@ interface Props {
   placeholder?: string
 }
 
-export default function RoundedInput({ className, placeholder }: Props) {
+export function RoundedInput({ className, placeholder }: Props) {
   return (
     <input
       type="text"
