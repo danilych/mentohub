@@ -8,14 +8,15 @@
     "jsx": "react-jsx",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "target": "ES2019",
+    "target": "ES2020",
     "strict": true,
     "allowJs": true,
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
       "~/*": ["app/*"],
-      "@shared/*": ["shared/*"]
+      "~/shared": ["./app/shared/index.ts"],
+
     },
 
     // Remix takes care of building everything in `remix build`.
