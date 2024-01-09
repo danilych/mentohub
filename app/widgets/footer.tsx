@@ -6,22 +6,18 @@ import {
   Youtube,
 } from 'assets/icons'
 import { Link } from '@remix-run/react'
-import Divider from '~/shared/divider'
-import { Text } from '~/shared/Typo/text'
-
-export let handle = { i18n: 'common' }
+import { Divider, Text } from '~/shared'
 
 export default function Footer() {
-
   return (
     <div className="flex gap-0 flex-col max-w-[1500px] mb-[42px] mx-auto min-mx-5 min-h-[342px] bg-white font-semibold text-black">
       <div className="flex relative flex-row gap-[218px] py-[42px]">
         <div className="flex flex-col gap-[13px]">
           <p className="color-[#161616] text-lg leading-[25px] font-semibold not-italic font-manrope">
-          Навігація
+            Навігація
           </p>
           <div className="flex flex-col gap-4">
-            <Link to='#'>
+            <Link to="#">
               <Text>Курси</Text>
             </Link>
             <Link to="#">
@@ -38,7 +34,7 @@ export default function Footer() {
 
         <div className="flex flex-col gap-[13px]">
           <p className="color-[#161616] text-lg leading-[25px] font-semibold not-italic font-manrope">
-          Про нас
+            Про нас
           </p>
           <div className="flex flex-col gap-4">
             <Link to="#">
@@ -67,7 +63,7 @@ export default function Footer() {
         <Divider />
         <div className="mt-6">
           <div className="absolute left-0">
-            <Link to='/'>
+            <Link to="/">
               <img
                 src={LogoMentohub}
                 className="h-[43px] mt-auto"

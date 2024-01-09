@@ -1,8 +1,4 @@
-import { Text } from '~/shared/Typo/text'
-import FilledButton from '~/shared/Buttons/filled-button'
-import RoundedInput from '~/shared/Inputs/rounded-input'
-
-export let handle = { i18n: 'common' }
+import { Text, FilledButton, RoundedInput } from '~/shared'
 
 export default function RegisterCard() {
   return (

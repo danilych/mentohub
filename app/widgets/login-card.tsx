@@ -1,6 +1,4 @@
-import { Text } from '~/shared/Typo/text'
-import FilledButton from '~/shared/Buttons/filled-button'
-import RoundedInput from '~/shared/Inputs/rounded-input'
+import { Text, FilledButton, RoundedInput } from '~/shared'
 
 export default function LoginCard() {
   return (

@@ -1,8 +1,4 @@
-import {
-  json,
-  type LoaderFunction,
-  type V2_MetaFunction,
-} from '@remix-run/node'
+import { type V2_MetaFunction } from '@remix-run/node'
 import { useEffect } from 'react'
 import instance from '~/axios'
 
