@@ -7,10 +7,7 @@ export const meta: V2_MetaFunction = () => {
 
 export default function Login() {
   return (
-    <div
-      className="bg-[#ebffd2] h-screen mt-[68px]"
-      style={{ fontFamily: 'system-ui, sans-serif', lineHeight: '1.4' }}
-    >
+    <div className="bg-[#ebffd2] h-screen mt-[68px]">
       <LoginCard />
     </div>
   )

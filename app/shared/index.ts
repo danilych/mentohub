@@ -4,5 +4,6 @@ export * from './Button/filled-button'
 export * from './Button/transparent-button'
 export * from './Typo/text'
 export * from './Typo/text-medium'
+export * from './Typo/header-2'
 export * from './divider'
 

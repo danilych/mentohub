@@ -1,0 +1,1 @@
+export { default as heroCover } from './hero-image.png'

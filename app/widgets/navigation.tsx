@@ -39,7 +39,9 @@ export default function Navigation() {
           Стати ментором
         </a>
         <Link to="/register">
-          <TransparentButton>Вхід</TransparentButton>
+          <div className="w-[130px]">
+            <TransparentButton>Вхід</TransparentButton>
+          </div>
         </Link>
 
         <LanguageDropbox />
