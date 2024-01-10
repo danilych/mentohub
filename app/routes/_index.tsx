@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 import instance from '~/axios'
 import { Header2, Text, TransparentButton } from '~/shared'
 import Hero from '~/widgets/homepage/hero'
+import Stats from '~/widgets/homepage/stats'
 
 export const meta: V2_MetaFunction = () => {
   return [{ title: 'Mentohub | Home' }]
@@ -19,6 +20,7 @@ export default function Index() {
   return (
     <div className="bg-white h-screen mt-[68px]">
       <Hero />
+      <Stats />
     </div>
   )
 }
