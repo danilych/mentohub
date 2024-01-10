@@ -9,6 +9,14 @@ node_modules
 /build/
 /public/build
 /api/index.js
+/api/build
 /api/index.js.map
+
+.vercel
+.eslintcache
+.DS_Store
+yarn-error.log
+
+.idea/
 
 .vscode
