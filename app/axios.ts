@@ -6,7 +6,7 @@ if (typeof window !== 'undefined') {
   link = window.ENV.AXIOS_URL
 }
 
-console.log(process.env.AXIOS_URL)
+console.log(link)
 const instance = axios.create({
   baseURL: link,
 })
