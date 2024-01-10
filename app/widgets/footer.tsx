@@ -7,6 +7,7 @@ import {
 } from 'assets/icons'
 import { Link } from '@remix-run/react'
 import { Divider, Text } from '~/shared'
+import { footerLinks1, footerLinks2 } from '~/data/footer-links'
 
 export default function Footer() {
   return (
@@ -17,18 +18,11 @@ export default function Footer() {
             Навігація
           </p>
           <div className="flex flex-col gap-4">
-            <Link to="#">
-              <Text>Курси</Text>
-            </Link>
-            <Link to="#">
-              <Text>Корпоративна освіта</Text>
-            </Link>
-            <Link to="#">
-              <Text>Стати ментором</Text>
-            </Link>
-            <Link to="#">
-              <Text>Мій кабінет</Text>
-            </Link>
+            {footerLinks1.map(text => (
+              <Link to={text.link}>
+                <Text>{text.title}</Text>
+              </Link>
+            ))}
           </div>
         </div>
 
@@ -37,18 +31,11 @@ export default function Footer() {
             Про нас
           </p>
           <div className="flex flex-col gap-4">
-            <Link to="#">
-              <Text>Контакти</Text>
-            </Link>
-            <Link to="#">
-              <Text>Умови використання</Text>
-            </Link>
-            <Link to="#">
-              <Text>Політика конфіденційності</Text>
-            </Link>
-            <Link to="#">
-              <Text>Налаштування файлів cookie</Text>
-            </Link>
+          {footerLinks2.map(text => (
+              <Link to={text.link}>
+                <Text>{text.title}</Text>
+              </Link>
+            ))}
           </div>
         </div>
 
