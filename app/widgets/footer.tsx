@@ -11,7 +11,7 @@ import { footerLinks1, footerLinks2 } from '~/data/footer-links'
 
 export default function Footer() {
   return (
-    <div className="flex gap-0 flex-col max-w-[1500px] mb-[42px] mx-auto min-mx-5 min-h-[342px] bg-white font-semibold text-black">
+    <div className="flex gap-0 flex-col max-w-[1500px] mb-[42px] mx-auto mt-[118px] min-mx-5 min-h-[342px] bg-white font-semibold text-black">
       <div className="flex relative flex-row gap-[218px] py-[42px]">
         <div className="flex flex-col gap-[13px]">
           <p className="color-[#161616] text-lg leading-[25px] font-semibold not-italic font-manrope">

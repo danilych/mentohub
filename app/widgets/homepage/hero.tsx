@@ -12,7 +12,7 @@ export default function Hero() {
           Онлайн курси
         </Header2>
 
-        <Header2 className="pt-10 inline-block pl-4">для кожного</Header2>
+        <Header2 className="pt-10 inline-block pl-3">для кожного</Header2>
       </div>
 
       <Text className=" w-[700px] mt-9">

@@ -1,5 +1,4 @@
 import { categories } from '~/data/categories'
-import { stats } from '~/data/stats'
 import { Header3 } from '~/shared'
 
 export default function Categories() {
@@ -9,7 +8,7 @@ export default function Categories() {
         <div>
           <Header3 className="inline-block text-[#C7FF80]">Категорії</Header3>
 
-          <Header3 className="inline-block pl-4">курсів</Header3>
+          <Header3 className="inline-block pl-2">курсів</Header3>
         </div>
 
         <div className='flex flex-row gap-6 mt-6'>

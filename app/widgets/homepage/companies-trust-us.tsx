@@ -9,19 +9,19 @@ export default function CompaniesTrustUs() {
           Нам довіряють понад
         </Header3>
 
-        <Header3 className="inline-block pl-4 text-[#454BE9]">
+        <Header3 className="inline-block pl-2 text-[#454BE9]">
           600
         </Header3>
 
-        <Header3 className="inline-block pl-4 text-[#0F0F10]">
+        <Header3 className="inline-block pl-2 text-[#0F0F10]">
           компаній та
         </Header3>
 
-        <Header3 className="inline-block pl-4 text-[#454BE9]">
+        <Header3 className="inline-block pl-2 text-[#454BE9]">
           тисячі
         </Header3>
 
-        <Header3 className="inline-block pl-4 text-[#0F0F10]">
+        <Header3 className="inline-block pl-2 text-[#0F0F10]">
           студентів
         </Header3>
       </div>

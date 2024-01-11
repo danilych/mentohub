@@ -4,6 +4,7 @@ import { heroCover } from 'assets/images'
 import { useEffect } from 'react'
 import instance from '~/axios'
 import { Header2, Text, TransparentButton } from '~/shared'
+import Advantages from '~/widgets/homepage/advantages'
 import Categories from '~/widgets/homepage/categories'
 import CompaniesTrustUs from '~/widgets/homepage/companies-trust-us'
 import Hero from '~/widgets/homepage/hero'
@@ -27,6 +28,7 @@ export default function Index() {
       </div>
       <CompaniesTrustUs />
       <Categories />
+      <Advantages />
     </div>
   )
 }
