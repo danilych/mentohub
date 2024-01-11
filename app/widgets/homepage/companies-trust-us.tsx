@@ -1,7 +1,5 @@
-import { Link } from '@remix-run/react'
-import { heroCover } from 'assets/images'
 import { companies } from '~/data/companies'
-import { Header3, Text, TransparentButton } from '~/shared'
+import { Header3 } from '~/shared'
 
 export default function CompaniesTrustUs() {
   return (

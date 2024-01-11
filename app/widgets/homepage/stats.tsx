@@ -1,7 +1,4 @@
-import { Link } from '@remix-run/react'
-import { heroCover } from 'assets/images'
 import { stats } from '~/data/stats'
-import { Header2, Text, TransparentButton } from '~/shared'
 
 export default function Stats() {
   return (

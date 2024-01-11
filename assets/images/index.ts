@@ -1,1 +1,6 @@
 export { default as heroCover } from './hero-image.png'
+export { default as Categories1 } from './categories-1.png'
+export { default as Categories2 } from './categories-2.png'
+export { default as Categories3 } from './categories-3.png'
+export { default as Categories4 } from './categories-4.png'
+export { default as Categories5 } from './categories-5.png'
