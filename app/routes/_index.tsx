@@ -4,6 +4,7 @@ import { heroCover } from 'assets/images'
 import { useEffect } from 'react'
 import instance from '~/axios'
 import { Header2, Text, TransparentButton } from '~/shared'
+import CompaniesTrustUs from '~/widgets/homepage/companies-trust-us'
 import Hero from '~/widgets/homepage/hero'
 import Stats from '~/widgets/homepage/stats'
 
@@ -18,9 +19,12 @@ export default function Index() {
   }, [])
 
   return (
-    <div className="bg-white h-screen mt-[68px]">
-      <Hero />
-      <Stats />
+    <div className="bg-white h-screen mt-[68px] flex flex-col gap-[120px]">
+      <div>
+        <Hero />
+        <Stats />
+      </div>
+      <CompaniesTrustUs />
     </div>
   )
 }

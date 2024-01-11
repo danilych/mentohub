@@ -19,7 +19,7 @@ export default function Footer() {
           </p>
           <div className="flex flex-col gap-4">
             {footerLinks1.map(text => (
-              <Link to={text.link}>
+              <Link key={text.title} to={text.link}>
                 <Text>{text.title}</Text>
               </Link>
             ))}
@@ -31,8 +31,8 @@ export default function Footer() {
             Про нас
           </p>
           <div className="flex flex-col gap-4">
-          {footerLinks2.map(text => (
-              <Link to={text.link}>
+            {footerLinks2.map(text => (
+              <Link key={text.title} to={text.link}>
                 <Text>{text.title}</Text>
               </Link>
             ))}
