@@ -13,7 +13,7 @@ export default function Categories() {
 
         <div className='flex flex-row gap-6 mt-6'>
           {categories.map(category => (
-            <div className='flex flex-col gap-4'>
+            <div key={category.image} className='flex flex-col gap-4'>
               <img
                 className="h-[293px] w-[281px] rounded-[10px]"
                 src={category.image}

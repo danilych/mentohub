@@ -1,3 +1,5 @@
+import { Facebook, Instagram, Telegram, Youtube } from "assets/icons"
+
 export const footerLinks1 = [
   {
     title: 'Курси',
@@ -35,3 +37,31 @@ export const footerLinks2 = [
     link: '#',
   },
 ]
+
+export const footerContacts = [
+  {
+    title: 'hello@mentohub.com',
+  },
+  {
+    title: '+38 093 962 32 78',
+  },
+  {
+    title: '+38 068 467 38 92',
+  },
+]
+
+export const footerSocials = [
+  {
+    icon: Facebook,
+  },
+  {
+    icon: Instagram,
+  },
+  {
+    icon: Telegram,
+  },
+  {
+    icon: Youtube,
+  },
+]
+

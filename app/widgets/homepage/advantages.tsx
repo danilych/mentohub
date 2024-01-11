@@ -13,7 +13,7 @@ export default function Advantages() {
 
         <div className='flex flex-row gap-6 mt-6'>
           {advantages.map(advantage => (
-            <div className='flex flex-col gap-4'>
+            <div key={advantage.image} className='flex flex-col gap-4'>
               <img
                 className="h-[291px] rounded-[4px] bg-[#C7FF80]"
                 src={advantage.image}

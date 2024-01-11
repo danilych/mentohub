@@ -7,7 +7,12 @@ import {
 } from 'assets/icons'
 import { Link } from '@remix-run/react'
 import { Divider, Text } from '~/shared'
-import { footerLinks1, footerLinks2 } from '~/data/footer-links'
+import {
+  footerContacts,
+  footerLinks1,
+  footerLinks2,
+  footerSocials,
+} from '~/data/footer'
 
 export default function Footer() {
   return (
@@ -40,9 +45,9 @@ export default function Footer() {
         </div>
 
         <div className="right-0 absolute text-2xl flex flex-col gap-4">
-          <Text>hello@mentohub.com</Text>
-          <Text>+ 38 093 962 32 78</Text>
-          <Text>+ 38 068 467 38 92</Text>
+          {footerContacts.map(contact => (
+            <Text key={contact.title}>{contact.title}</Text>
+          ))}
         </div>
       </div>
 
@@ -64,10 +69,9 @@ export default function Footer() {
           </div>
 
           <div className="flex absolute right-0 flex-row gap-6">
-            <img src={Facebook} alt="Facebook Logo" />
-            <img src={Instagram} alt="Instagram Logo" />
-            <img src={Telegram} alt="Telegram Logo" />
-            <img src={Youtube} alt="Youtube Logo" />
+            {footerSocials.map(social => (
+              <img key={social.icon} src={social.icon} alt="Facebook Logo" />
+            ))}
           </div>
         </div>
       </div>
