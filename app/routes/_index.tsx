@@ -12,7 +12,6 @@ import {
   JoinUs,
   Stats,
 } from '~/widgets'
-import { FAQ } from '~/widgets/homepage/faq'
 
 export const meta: V2_MetaFunction = () => {
   return [{ title: 'Mentohub | Home' }]
