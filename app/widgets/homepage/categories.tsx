@@ -1,7 +1,7 @@
 import { categories } from '~/data/categories'
 import { Header3 } from '~/shared'
 
-export default function Categories() {
+export function Categories() {
   return (
     <div className="bg-[#B5B7F6] py-9 w-full">
       <div className="mx-auto max-w-[1500px]">

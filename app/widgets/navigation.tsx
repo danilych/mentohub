@@ -1,7 +1,7 @@
 import { LogoMentohub, Search } from 'assets/icons'
 import { Link } from '@remix-run/react'
 import { TransparentInput, TransparentButton } from '~/shared'
-import LanguageDropbox from '~/features/language-dropbox'
+import { LanguageDropbox } from '~/features'
 
 export default function Navigation() {
   return (

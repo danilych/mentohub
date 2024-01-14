@@ -1,7 +1,7 @@
 import { companies } from '~/data/companies'
 import { Header3 } from '~/shared'
 
-export default function CompaniesTrustUs() {
+export function CompaniesTrustUs() {
   return (
     <div className="w-full relative">
       <div className='mx-auto text-center'>

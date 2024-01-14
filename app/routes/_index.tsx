@@ -4,11 +4,15 @@ import { heroCover } from 'assets/images'
 import { useEffect } from 'react'
 import instance from '~/axios'
 import { Header2, Text, TransparentButton } from '~/shared'
-import Advantages from '~/widgets/homepage/advantages'
-import Categories from '~/widgets/homepage/categories'
-import CompaniesTrustUs from '~/widgets/homepage/companies-trust-us'
-import Hero from '~/widgets/homepage/hero'
-import Stats from '~/widgets/homepage/stats'
+import {
+  Advantages,
+  Categories,
+  CompaniesTrustUs,
+  Hero,
+  JoinUs,
+  Stats,
+} from '~/widgets'
+import { FAQ } from '~/widgets/homepage/faq'
 
 export const meta: V2_MetaFunction = () => {
   return [{ title: 'Mentohub | Home' }]
@@ -29,6 +33,8 @@ export default function Index() {
       <CompaniesTrustUs />
       <Categories />
       <Advantages />
+      <JoinUs />
+      <FAQ />
     </div>
   )
 }

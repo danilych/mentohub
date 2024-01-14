@@ -2,7 +2,7 @@ import { Link } from '@remix-run/react'
 import { heroCover } from 'assets/images'
 import { Header2, Text, TransparentButton } from '~/shared'
 
-export default function Hero() {
+export function Hero() {
   return (
     <div className="h-[600px] bg-[#EBFFD2] pl-[210px] w-full relative">
       <Header2 className="pt-[92px]">Хочеш нову професію?</Header2>

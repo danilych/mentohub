@@ -1,7 +1,7 @@
 import { advantages } from '~/data/advantages'
 import { Header3 } from '~/shared'
 
-export default function Advantages() {
+export function Advantages() {
   return (
     <div className="w-full">
       <div className="mx-auto text-center max-w-[1500px]">

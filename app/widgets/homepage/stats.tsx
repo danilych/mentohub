@@ -1,6 +1,6 @@
 import { stats } from '~/data/stats'
 
-export default function Stats() {
+export function Stats() {
   return (
     <div className="bg-[#C7FF80] w-full relative">
         <div className='flex flex-row max-w-[1035px] gap-[96px] mx-auto py-9'>

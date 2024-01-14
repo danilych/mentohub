@@ -7,7 +7,7 @@ interface Props {
   className?: string
 }
 
-export default function LanguageDropbox({ className }: Props) {
+export function LanguageDropbox({ className }: Props) {
   return (
     <Dropdown className={clsx(className)} label={<img src={Language} />} inline>
       <Dropdown.Item href="#">Українська</Dropdown.Item>
