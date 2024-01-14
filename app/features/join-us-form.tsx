@@ -12,8 +12,10 @@ export function JoinUsForm() {
         <UnderlinedInput placeholder="Ім’я" />
         <UnderlinedInput placeholder="Email" />
         <UnderlinedInput placeholder="Опишіть ваш план" />
-        <div className='flex flex-col gap-4'>
-          <TransparentButton className="w-[168px]">Надіслати</TransparentButton>
+        <div className="flex flex-col gap-4">
+          <div className="w-[168px]">
+            <TransparentButton>Надіслати</TransparentButton>
+          </div>
           <div>
             <p className="inline-block ">Продовжуючи ти погоджуєшся з</p>
 
