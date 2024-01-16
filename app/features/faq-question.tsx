@@ -29,7 +29,7 @@ export function FaqQuestion({ ...props }) {
             isVisibly ? 'rotate-180' : ''
           )}
         >
-          <Arrow />
+          <img src={Arrow} alt="arrow" />
         </div>
       </div>
       <div
