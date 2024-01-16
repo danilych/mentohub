@@ -8,6 +8,7 @@ import {
   Advantages,
   Categories,
   CompaniesTrustUs,
+  FAQ,
   Hero,
   JoinUs,
   Stats,

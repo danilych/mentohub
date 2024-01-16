@@ -13,3 +13,4 @@ export { default as HewlettPackardEnterprise } from './hewlett-packard-enterpris
 export { default as ProcterGamble } from './procter-gamble.svg'
 export { default as Samsung } from './samsung.svg'
 export { default as Volkswagen } from './volkswagen.svg'
+export { default as Arrow } from './arrow.svg'
