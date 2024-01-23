@@ -1,4 +1,3 @@
-import { ReactNode } from 'react'
 import clsx from 'clsx'
 import { Dropdown } from 'flowbite-react'
 import { Language } from 'assets/icons'

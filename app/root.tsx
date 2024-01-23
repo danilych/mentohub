@@ -1,5 +1,6 @@
 import { cssBundleHref } from '@remix-run/css-bundle'
-import { json, type LinksFunction, LoaderFunction } from '@remix-run/node'
+import { json} from '@remix-run/node';
+import type { LoaderFunction , LinksFunction } from '@remix-run/node';
 import {
   Links,
   LiveReload,

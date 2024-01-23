@@ -1,10 +1,4 @@
-import {
-  Facebook,
-  Instagram,
-  LogoMentohub,
-  Telegram,
-  Youtube,
-} from 'assets/icons'
+import { LogoMentohub } from 'assets/icons'
 import { Link } from '@remix-run/react'
 import { Divider, Text } from '~/shared'
 import {
