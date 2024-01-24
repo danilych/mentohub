@@ -10,6 +10,19 @@ export const fetchAuth = createAsyncThunk(
   }
 )
 
+export const fetchRegister = createAsyncThunk(
+  'auth/fetchRegister',
+  async (params: any) => {
+    try {
+      const { data } = await instance.post('/api/account/register', params)
+
+      return data
+    } catch (error) {
+      console.log(error)
+    }
+  }
+)
+
 const initialState = {
   data: null,
   status: 'loading',
@@ -39,6 +52,18 @@ const authSlice = createSlice({
       state.data = action.payload
     })
     builder.addCase(fetchAuth.rejected, (state, action) => {
+      state.status = 'error'
+      state.data = null
+    })
+    builder.addCase(fetchRegister.pending, (state, action) => {
+      state.status = 'loading'
+      state.data = null
+    })
+    builder.addCase(fetchRegister.fulfilled, (state, action) => {
+      state.status = 'loaded'
+      state.data = action.payload
+    })
+    builder.addCase(fetchRegister.rejected, (state, action) => {
       state.status = 'error'
       state.data = null
     })

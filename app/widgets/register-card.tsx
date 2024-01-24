@@ -1,8 +1,33 @@
 import { Text, FilledButton, RoundedInput } from '~/shared'
+import { useForm } from 'react-hook-form'
+import { useDispatch } from 'react-redux'
+import { fetchRegister } from '~/redux/slices/auth'
+import { ThunkDispatch } from '@reduxjs/toolkit'
 
 export default function RegisterCard() {
+  const dispatch = useDispatch<ThunkDispatch<any, any, any>>()
+
+  const { register, handleSubmit } = useForm({
+    defaultValues: {
+      name: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+    },
+    mode: 'onChange',
+  })
+
+  const onSubmit = async (values: any) => {
+    const data = await dispatch(fetchRegister(values))
+
+    console.log(data)
+  }
+
   return (
-    <div className="flex gap-0 flex-col w-[621px] h-[728px] bg-white pb-[42px] font-semibold rounded-[20px] shadow-lg absolute m-auto top-0 right-0 bottom-0 left-0 text-black">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="flex gap-0 flex-col w-[621px] h-[728px] bg-white pb-[42px] font-semibold rounded-[20px] shadow-lg absolute m-auto top-0 right-0 bottom-0 left-0 text-black"
+    >
       <p className="text-center mb-6 text-[#1F1F1F] font-semibold text-2xl font-manrope mt-[42px]">
         Реєстрація
       </p>
@@ -10,22 +35,34 @@ export default function RegisterCard() {
       <div className="mx-[54px] flex flex-col gap-6">
         <div>
           <Text>Повне і’мя</Text>
-          <RoundedInput className="mt-2" />
+          <input
+            className="mt-2 px-3 text-[#4E4E51] h-[50px] bg-[#F6F6F6] rounded-[50px] outline-none text-sm font-manrope font-normal w-full border-0"
+            {...register('name', { required: 'Enter your name' })}
+          />
         </div>
 
         <div>
           <Text>Електронна пошта</Text>
-          <RoundedInput className="mt-2" />
+          <input
+            {...register('email', { required: 'Enter your name' })}
+            className="mt-2 px-3 text-[#4E4E51] h-[50px] bg-[#F6F6F6] rounded-[50px] outline-none text-sm font-manrope font-normal w-full border-0"
+          />
         </div>
 
         <div>
           <Text>Пароль</Text>
-          <RoundedInput className="mt-2" />
+          <input
+            className="mt-2 px-3 text-[#4E4E51] h-[50px] bg-[#F6F6F6] rounded-[50px] outline-none text-sm font-manrope font-normal w-full border-0"
+            {...register('password', { required: 'Enter your name' })}
+          />
         </div>
 
         <div>
           <Text>Підтвердження паролю</Text>
-          <RoundedInput className="mt-2" />
+          <input
+            className="mt-2 px-3 text-[#4E4E51] h-[50px] bg-[#F6F6F6] rounded-[50px] outline-none text-sm font-manrope font-normal w-full border-0"
+            {...register('confirmPassword', { required: 'Enter your name' })}
+          />
         </div>
 
         <div className="flex flex-row gap-6 mr-[15px]">
@@ -39,10 +76,10 @@ export default function RegisterCard() {
       </div>
 
       <div className="mx-auto">
-        <FilledButton className="mt-9">
-          <p className="text-white text-2xl">Зареєструвати</p>
+        <FilledButton type="submit" className="mt-9">
+          <p className=" text-white text-2xl">Зареєструвати</p>
         </FilledButton>
       </div>
-    </div>
+    </form>
   )
 }

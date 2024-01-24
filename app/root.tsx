@@ -14,6 +14,8 @@ import {
 import stylesheet from '~/tailwind.css'
 import Navigation from './widgets/navigation'
 import Footer from './widgets/footer'
+import store from './redux/store';
+import { Provider } from 'react-redux';
 
 export const loader: LoaderFunction = async () => {
   return json({
@@ -43,18 +45,20 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Navigation />
-        <Outlet />
-        <ScrollRestoration />
-        <Scripts />
-        <LiveReload />
-        <Footer />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `window.ENV = ${JSON.stringify(data.ENV)}`,
-          }}
-        />
-        <Scripts />
+        <Provider store={store}>
+          <Navigation />
+          <Outlet />
+          <ScrollRestoration />
+          <Scripts />
+          <LiveReload />
+          <Footer />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `window.ENV = ${JSON.stringify(data.ENV)}`,
+            }}
+          />
+          <Scripts />
+        </Provider>
       </body>
     </html>
   )
