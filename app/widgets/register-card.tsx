@@ -9,16 +9,21 @@ export default function RegisterCard() {
 
   const { register, handleSubmit } = useForm({
     defaultValues: {
-      name: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
+      NickName: '',
+      Email: '',
+      Password: '',
+      ConfirmPassword: '',
     },
     mode: 'onChange',
   })
 
   const onSubmit = async (values: any) => {
+    console.log("data from inputs: ", JSON.stringify(values))
     const data = await dispatch(fetchRegister(values))
+
+    if (data.payload) {
+      console.log(true)
+    }
 
     console.log(data)
   }
@@ -37,14 +42,14 @@ export default function RegisterCard() {
           <Text>Повне і’мя</Text>
           <input
             className="mt-2 px-3 text-[#4E4E51] h-[50px] bg-[#F6F6F6] rounded-[50px] outline-none text-sm font-manrope font-normal w-full border-0"
-            {...register('name', { required: 'Enter your name' })}
+            {...register('NickName', { required: 'Enter your name' })}
           />
         </div>
 
         <div>
           <Text>Електронна пошта</Text>
           <input
-            {...register('email', { required: 'Enter your name' })}
+            {...register('Email', { required: 'Enter your name' })}
             className="mt-2 px-3 text-[#4E4E51] h-[50px] bg-[#F6F6F6] rounded-[50px] outline-none text-sm font-manrope font-normal w-full border-0"
           />
         </div>
@@ -53,7 +58,7 @@ export default function RegisterCard() {
           <Text>Пароль</Text>
           <input
             className="mt-2 px-3 text-[#4E4E51] h-[50px] bg-[#F6F6F6] rounded-[50px] outline-none text-sm font-manrope font-normal w-full border-0"
-            {...register('password', { required: 'Enter your name' })}
+            {...register('Password', { required: 'Enter your name' })}
           />
         </div>
 
@@ -61,7 +66,7 @@ export default function RegisterCard() {
           <Text>Підтвердження паролю</Text>
           <input
             className="mt-2 px-3 text-[#4E4E51] h-[50px] bg-[#F6F6F6] rounded-[50px] outline-none text-sm font-manrope font-normal w-full border-0"
-            {...register('confirmPassword', { required: 'Enter your name' })}
+            {...register('ConfirmPassword', { required: 'Enter your name' })}
           />
         </div>
 

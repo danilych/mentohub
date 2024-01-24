@@ -14,6 +14,7 @@ export const fetchRegister = createAsyncThunk(
   'auth/fetchRegister',
   async (params: any) => {
     try {
+      console.log("params: ", params)
       const { data } = await instance.post('/api/account/register', params)
 
       return data
