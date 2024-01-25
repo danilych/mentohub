@@ -1,6 +1,5 @@
 import { type V2_MetaFunction } from '@remix-run/node'
 import CreateCourseForm from '~/widgets/create-course-form'
-import LoginCard from '~/widgets/login-card'
 
 export const meta: V2_MetaFunction = () => {
   return [{ title: 'Mentohub | Create Course' }]

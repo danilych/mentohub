@@ -1,10 +1,10 @@
-import { ThunkDispatch } from '@reduxjs/toolkit'
+import type { ThunkDispatch } from '@reduxjs/toolkit'
 import { Link, useNavigate } from '@remix-run/react'
 import { useForm } from 'react-hook-form'
 import toast, { Toaster } from 'react-hot-toast'
 import { useDispatch } from 'react-redux'
 import { fetchAuth } from '~/redux/slices/auth'
-import { Text, FilledButton, RoundedInput } from '~/shared'
+import { Text, FilledButton } from '~/shared'
 import { delay } from './helpers/delay'
 
 export default function LoginCard() {

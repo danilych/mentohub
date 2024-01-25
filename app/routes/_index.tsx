@@ -1,8 +1,6 @@
 import { type V2_MetaFunction } from '@remix-run/node'
 import { useEffect } from 'react'
-import { useSelector } from 'react-redux'
 import instance from '~/axios'
-import { selectIsAuth } from '~/redux/slices/auth'
 import {
   Advantages,
   Categories,

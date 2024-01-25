@@ -1,6 +1,6 @@
 import clsx from 'clsx'
-import React, { forwardRef, HTMLProps, useImperativeHandle, useRef } from 'react';
-import { FieldError, FieldValues, UseFormRegister } from 'react-hook-form';
+import type { HTMLProps} from 'react';
+import React, { forwardRef, useImperativeHandle, useRef } from 'react';
 
 interface Props extends HTMLProps<HTMLInputElement> {
   className?: string
