@@ -5,8 +5,7 @@ import { fetchRegister, selectIsAuth } from '~/redux/slices/auth'
 import { ThunkDispatch } from '@reduxjs/toolkit'
 import { useNavigate } from '@remix-run/react'
 import toast, { Toaster } from 'react-hot-toast'
-
-const delay = (ms: number): Promise<void> => new Promise(resolve => setTimeout(resolve, ms));
+import { delay } from './helpers/delay'
 
 export default function RegisterCard() {
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>()

@@ -38,7 +38,7 @@ export default function Navigation() {
         <a href="#" className="my-auto text-sm font-medium font-manrope">
           Стати ментором
         </a>
-        <Link to="/register">
+        <Link to="/login">
           <div className="w-[130px]">
             <TransparentButton>Вхід</TransparentButton>
           </div>
