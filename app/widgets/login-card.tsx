@@ -2,13 +2,15 @@ import type { ThunkDispatch } from '@reduxjs/toolkit'
 import { Link, useNavigate } from '@remix-run/react'
 import { useForm } from 'react-hook-form'
 import toast, { Toaster } from 'react-hot-toast'
-import { useDispatch } from 'react-redux'
-import { fetchAuth } from '~/redux/slices/auth'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchAuth, selectIsAuth } from '~/redux/slices/auth'
 import { Text, FilledButton } from '~/shared'
 import { delay } from './helpers/delay'
 
 export default function LoginCard() {
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>()
+
+  const isAuth = useSelector(selectIsAuth)
 
   const navigate = useNavigate()
 
