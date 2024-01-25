@@ -1,11 +1,17 @@
 import { Text, FilledButton, RoundedInput } from '~/shared'
 import { useForm } from 'react-hook-form'
-import { useDispatch } from 'react-redux'
-import { fetchRegister } from '~/redux/slices/auth'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchRegister, selectIsAuth } from '~/redux/slices/auth'
 import { ThunkDispatch } from '@reduxjs/toolkit'
+import { useNavigate } from '@remix-run/react'
+import toast, { Toaster } from 'react-hot-toast'
+
+const delay = (ms: number): Promise<void> => new Promise(resolve => setTimeout(resolve, ms));
 
 export default function RegisterCard() {
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>()
+
+  const navigate = useNavigate()
 
   const { register, handleSubmit } = useForm({
     defaultValues: {
@@ -18,14 +24,29 @@ export default function RegisterCard() {
   })
 
   const onSubmit = async (values: any) => {
-    console.log("data from inputs: ", JSON.stringify(values))
-    const data = await dispatch(fetchRegister(values))
+    try {
+      const data = await dispatch(fetchRegister(values))
 
-    if (data.payload) {
-      console.log(true)
+      if (data.payload) {
+        console.log(true)
+
+        toast.success('You are successfully registered!')
+
+        await delay(3000);
+
+        navigate('/')
+      } else {
+        toast.error('Something went wrong!')
+
+        return
+      }
+
+      window.localStorage.setItem('userId', data.payload.id)
+      window.localStorage.setItem('email', data.payload.email)
+      window.localStorage.setItem('name', data.payload.userName)
+    } catch (error) {
+      toast.error('Something went wrong!')
     }
-
-    console.log(data)
   }
 
   return (
@@ -85,6 +106,23 @@ export default function RegisterCard() {
           <p className=" text-white text-2xl">Зареєструвати</p>
         </FilledButton>
       </div>
+      <Toaster
+        toastOptions={{
+          duration: 5000,
+          success: {
+            style: {
+              background: 'green',
+              color: 'white',
+            },
+          },
+          error: {
+            style: {
+              background: 'red',
+              color: 'white',
+            },
+          },
+        }}
+      />
     </form>
   )
 }
