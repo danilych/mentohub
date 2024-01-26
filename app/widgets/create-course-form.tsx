@@ -13,12 +13,19 @@ import { ThunkDispatch } from '@reduxjs/toolkit'
 import { useForm } from 'react-hook-form'
 import { FileInput } from 'flowbite-react'
 import { objectToFormData } from './helpers/object-to-form-data'
+import { createCourse } from '~/redux/slices/course'
+import toast, { Toaster } from 'react-hot-toast'
+import { delay } from './helpers/delay'
+import { useNavigate } from '@remix-run/react'
 
 export default function CreateCourseForm() {
   const inputImageRef = useRef<HTMLInputElement | null>(null)
   const inputVideoRef = useRef<HTMLInputElement | null>(null)
 
-  const mediaData = new FormData()
+  const navigate = useNavigate()
+
+  let image: string | Blob
+  let video: string | Blob
 
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>()
 
@@ -34,41 +41,54 @@ export default function CreateCourseForm() {
 
   const handleImageChange = (event: any) => {
     event.preventDefault()
-    mediaData.append('Picture', event.target.files[0])
-    console.log(event.target.files[0])
+
+    image = event.target.files[0]
   }
 
   const handleVideoChange = (event: any) => {
     event.preventDefault()
-    mediaData.append('PreviewVideo', event.target.files[0])
-    console.log(event.target.files[0])
+
+    video = event.target.files[0]
   }
 
   const { register, handleSubmit } = useForm({
     defaultValues: {
       Id: '-1',
       Name: '',
-      // AuthorId: window.localStorage.getItem('userId'),
       Price: '',
       CourseSubjectId: selectedCategory,
       LanguageId: selectedLanguage,
       ShortDescription: '',
       Description: '',
-      CourseLevelId: '',
+      CourseLevelId: '2',
     },
     mode: 'onChange',
   })
 
   const onSubmit = async (values: any) => {
     console.log(values)
-    let formData = objectToFormData(values);
-    formData.append('Picture', mediaData.get('Picture') as Blob)
-    formData.append('AuthorId', window.localStorage.getItem('userId') as string)
-    formData.append('PreviewVideo', mediaData.get('PreviewVideo') as Blob)
-    console.log(formData)
-  }
+    let formData = objectToFormData(values)
 
-  // console.log(selectedCategory)
+    formData.append('Picture', image)
+    formData.append('AuthorId', window.localStorage.getItem('userId') as string)
+    formData.append('PreviewVideo', video)
+
+    console.log(formData)
+
+    const data = await dispatch(createCourse(formData))
+    console.log('data: ', data)
+    if (data.payload) {
+      if (data.payload.message === 'Success') {
+        toast.success('Success')
+
+        await delay(3000)
+
+        navigate('/')
+      } else {
+        toast.error(data.payload.message)
+      }
+    }
+  }
 
   const handleButtonClick = (buttonId: any) => {
     setSelectedLanguage(buttonId)
@@ -93,13 +113,13 @@ export default function CreateCourseForm() {
       <div className="flex flex-col gap-2">
         <Text className="ml-3">Головна світлина (формати JPG, PNG)</Text>
         <input
-            onChange={handleImageChange}
-            ref={inputImageRef}
-            type="file"
-            hidden
-          />
+          onChange={handleImageChange}
+          ref={inputImageRef}
+          type="file"
+          hidden
+        />
 
-        <button type='button' onClick={() => inputImageRef.current?.click()}>
+        <button type="button" onClick={() => inputImageRef.current?.click()}>
           <img src={AddImageCover} alt="Add image" />
         </button>
       </div>
@@ -131,17 +151,16 @@ export default function CreateCourseForm() {
       <div className="flex flex-col gap-2">
         <Text className="ml-3">Відео-вітання (формати MP4, MOV, WEBM)</Text>
         <input
-            onChange={handleVideoChange}
-            ref={inputVideoRef}
-            type="file"
-            hidden
-          />
+          onChange={handleVideoChange}
+          ref={inputVideoRef}
+          type="file"
+          hidden
+        />
 
-        <button type='button' onClick={() => inputVideoRef.current?.click()}>
+        <button type="button" onClick={() => inputVideoRef.current?.click()}>
           <img src={AddImageCover} alt="Add image" />
         </button>
       </div>
-
 
       <div className="flex flex-row w-[644px] gap-6">
         <button
@@ -285,6 +304,24 @@ export default function CreateCourseForm() {
       <FilledButton type="submit" className="mx-auto px-[50px] mt-9">
         <p className="text-white w-[216px] text-2xl">Створити</p>
       </FilledButton>
+
+      <Toaster
+        toastOptions={{
+          duration: 5000,
+          success: {
+            style: {
+              background: 'green',
+              color: 'white',
+            },
+          },
+          error: {
+            style: {
+              background: 'red',
+              color: 'white',
+            },
+          },
+        }}
+      />
     </form>
   )
 }
