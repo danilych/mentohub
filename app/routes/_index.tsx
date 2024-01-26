@@ -2,6 +2,7 @@ import { type V2_MetaFunction } from '@remix-run/node'
 import { Link } from '@remix-run/react'
 import { heroCover } from 'assets/images'
 import { useEffect } from 'react'
+import { JSX } from 'react/jsx-runtime'
 import instance from '~/axios'
 import { Header2, Text, TransparentButton } from '~/shared'
 import {
@@ -13,6 +14,7 @@ import {
   JoinUs,
   Stats,
 } from '~/widgets'
+import { FamoustCarousel } from '~/widgets/homepage/famoustcarusel'
 
 export const meta: V2_MetaFunction = () => {
   return [{ title: 'Mentohub | Home' }]
@@ -30,6 +32,7 @@ export default function Index() {
         <Hero />
         <Stats />
       </div>
+      <FamoustCarousel></FamoustCarousel>
       <CompaniesTrustUs />
       <Categories />
       <Advantages />
