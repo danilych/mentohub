@@ -42,7 +42,7 @@ export default function Navigation() {
         <a href="#" className="my-auto text-sm font-medium font-manrope">
           Стати ментором
         </a>
-        <Link to={isAuth ? "/my-account/profile" : "/login"}>
+        <Link to={isAuth ? "/my-account" : "/login"}>
           <div className="w-[130px]">
             <TransparentButton>{isAuth ? "Мій кабінет" : "Вхід"}</TransparentButton>
           </div>
