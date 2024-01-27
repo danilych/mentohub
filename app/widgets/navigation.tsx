@@ -9,7 +9,7 @@ export default function Navigation() {
   const isAuth = useSelector(selectIsAuth)
   console.log("isAuth: ", isAuth)
   return (
-    <div className="fixed top-0 left-0 z-[999] flex w-full flex-row py-auto h-[68px] justify-between gap-y-2 bg-white font-semibold text-black">
+    <div className="fixed top-0 left-0 z-[999] flex w-full border-b-[1px] border-[#BDBDBD] flex-row py-auto h-[68px] justify-between gap-y-2 bg-white font-semibold text-black">
       <div className="my-auto flex flex-row gap-10 items-center ml-[210px]">
         <Link to="/">
           <img
@@ -42,7 +42,7 @@ export default function Navigation() {
         <a href="#" className="my-auto text-sm font-medium font-manrope">
           Стати ментором
         </a>
-        <Link to={isAuth ? "/my-profile" : "/login"}>
+        <Link to={isAuth ? "/my-account/profile" : "/login"}>
           <div className="w-[130px]">
             <TransparentButton>{isAuth ? "Мій кабінет" : "Вхід"}</TransparentButton>
           </div>

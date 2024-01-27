@@ -18,7 +18,7 @@ import toast, { Toaster } from 'react-hot-toast'
 import { delay } from './helpers/delay'
 import { useNavigate } from '@remix-run/react'
 
-export default function CreateCourseForm() {
+export function CreateCourseForm() {
   const inputImageRef = useRef<HTMLInputElement | null>(null)
   const inputVideoRef = useRef<HTMLInputElement | null>(null)
 

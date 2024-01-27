@@ -3,13 +3,13 @@ import { useNavigate } from '@remix-run/react'
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { selectIsAuth } from '~/redux/slices/auth'
-import { CreateCourseForm } from '~/widgets'
+import { AccountMenu } from '~/widgets'
 
 export const meta: V2_MetaFunction = () => {
-  return [{ title: 'Mentohub | Create Course' }]
+  return [{ title: 'Mentohub | My Account' }]
 }
 
-export default function CreateCourse() {
+export default function MyCourses() {
   const navigate = useNavigate()
 
   const isAuth = useSelector(selectIsAuth)
@@ -21,8 +21,8 @@ export default function CreateCourse() {
   }, [])
 
   return (
-    <div className="bg-[#ebffd2] pb-[92px] mt-[68px]">
-      <CreateCourseForm />
+    <div className="bg-white pb-[92px] mt-[68px]">
+      <AccountMenu page="my-courses" />
     </div>
   )
 }
