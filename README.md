@@ -1,5 +1,4 @@
-# Course Platform Frontend
-
+# Mentohub | Remix.run App
 This repository contains the frontend code for a course platform, built using Remix.js. The platform follows a feature-sliced design architecture, providing a modular and scalable structure for managing courses and related functionalities.
 Features
 
@@ -13,6 +12,19 @@ Features
 - User profile management and settings
 
 ## Tech Stack
+
+![Redux](https://img.shields.io/badge/-Redux-090909?style=for-the-badge&logo=redux)
+![Node](https://img.shields.io/badge/-Node-090909?style=for-the-badge&logo=node.js)
+![Remix](https://img.shields.io/badge/-Remix-090909?style=for-the-badge&logo=remix)
+![TypeScript](https://img.shields.io/badge/-TypeScript-090909?style=for-the-badge&logo=typescript)
+![Redux](https://img.shields.io/badge/-Redux-090909?style=for-the-badge&logo=redux)
+![Axios](https://img.shields.io/badge/-Axios-090909?style=for-the-badge&logo=axios)
+![Prettier](https://img.shields.io/badge/-Prettier-090909?style=for-the-badge&logo=prettier)
+![StyleLint](https://img.shields.io/badge/-StyleLint-090909?style=for-the-badge&logo=stylelint)
+![ESLint](https://img.shields.io/badge/-ESLint-090909?style=for-the-badge&logo=eslint)
+![Yarn](https://img.shields.io/badge/-Yarn-090909?style=for-the-badge&logo=yarn)
+![TailwindCSS](https://img.shields.io/badge/-TailwindCSS-090909?style=for-the-badge&logo=tailwindCss)
+![Git](https://img.shields.io/badge/-Git-090909?style=for-the-badge&logo=git)
 
 - Remix.js (React framework for building web applications)
 - JavaScript/TypeScript
