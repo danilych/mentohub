@@ -38,5 +38,6 @@ module.exports = {
     /^ccount*/,
     /^markdown-table*/,
     /^axios*/,
+    /^slick-carousel*/,
 ]
 };
