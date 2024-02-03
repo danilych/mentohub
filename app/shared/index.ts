@@ -8,4 +8,5 @@ export * from './Typo/text-medium'
 export * from './Typo/header-2'
 export * from './Typo/header-3'
 export * from './divider'
+export * from './tag'
 

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import instance from '~/axios'
 import { companies } from '~/data/companies'
-import { Header2, Header3, Text } from '~/shared'
+import { Header2, Header3, Tag, Text } from '~/shared'
 import Slider from 'react-slick'
 import { Spinner } from 'flowbite-react'
 
@@ -13,6 +13,7 @@ import { render } from 'react-dom'
 
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
+import { RatingStar } from 'assets/icons'
 
 export function FamousCourses() {
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>()
@@ -37,7 +38,7 @@ export function FamousCourses() {
     slidesToShow: 3,
     slidesToScroll: 3,
   }
- 
+
   return (
     <div className="w-full relative">
       <div className="mb-6 mx-auto w-[1500px]">
@@ -49,7 +50,11 @@ export function FamousCourses() {
       </div>
       {isPostsLoading ? (
         <div className="w-full h-[570px]">
-          <Spinner className='absolute top-1/2 left-1/2 mt-[-50px] ml-[-50px]' aria-label="Default status example" size="lg" />
+          <Spinner
+            className="absolute top-1/2 left-1/2 mt-[-50px] ml-[-50px]"
+            aria-label="Default status example"
+            size="lg"
+          />
         </div>
       ) : (
         <Slider {...settings}>
@@ -57,9 +62,49 @@ export function FamousCourses() {
           {courses.items.map((course: any) => (
             <div>
               <div className="w-[484px] h-[570px] bg-[#F6F6F6] pt-6 rounded-[20px] px-5">
-                <img className='h-[250px] w-[444px] mx-auto rounded-[20px]' src={'https://mystudystorage.blob.core.windows.net/test/' + course.picturePath} alt="" />
-                <Header3 className='mt-4'>{course.name}</Header3>
-                <Text>{course.description}</Text>
+                <img
+                  className="h-[250px] w-[444px] mx-auto rounded-[20px]"
+                  src={
+                    'https://mystudystorage.blob.core.windows.net/test/' +
+                    course.picturePath
+                  }
+                  alt=""
+                />
+
+                <div className="mt-4 flex flex-row gap-[18px]">
+                  <Tag>розробка</Tag>
+                  <Tag>python</Tag>
+                  <Tag>sql</Tag>
+                </div>
+
+                <Header3 className="mt-4 leading-[26px] text-2xl font-sans font-medium">
+                  {course.name}
+                </Header3>
+
+                <Text className="text-[#4e4e51] mt-6">
+                  It is test description of the course. It is test description
+                  of our course It is I need a lot of text to test the
+                  description of the course. It is test description of our
+                  course It is I need a lot of text to test the description of
+                  the course.
+                </Text>
+
+                <div className="bottom-6 absolute flex flex-row gap-[40px]">
+                  <p className="font-bold text-[#1a1a1b] text-lg font-manrope color-[#161616] p-0 m-0 leading-[22px] not-italic font-manrope">
+                    {course.price + ' UAH'}
+                  </p>
+
+                  <div className="flex flex-row">
+                    <p className="mr-1 font-bold text-[#1a1a1b] text-lg font-manrope color-[#161616] p-0 m-0 leading-[22px] not-italic font-manrope">
+                      {course.rating}
+                    </p>
+
+                    <img className="h-5 w-5" src={RatingStar} alt="" />
+                    <img className="h-5 w-5" src={RatingStar} alt="" />
+                    <img className="h-5 w-5" src={RatingStar} alt="" />
+                    <img className="h-5 w-5" src={RatingStar} alt="" />
+                  </div>
+                </div>
               </div>
             </div>
           ))}
