@@ -3,15 +3,12 @@ import { useRef, useState } from 'react'
 import {
   FilledButton,
   Header3,
-  RoundedInput,
   Text,
-  TransparentButton,
 } from '~/shared'
 import clsx from 'clsx'
 import { useDispatch } from 'react-redux'
-import { ThunkDispatch } from '@reduxjs/toolkit'
+import type { ThunkDispatch } from '@reduxjs/toolkit'
 import { useForm } from 'react-hook-form'
-import { FileInput } from 'flowbite-react'
 import { objectToFormData } from './helpers/object-to-form-data'
 import { createCourse } from '~/redux/slices/courses'
 import toast, { Toaster } from 'react-hot-toast'

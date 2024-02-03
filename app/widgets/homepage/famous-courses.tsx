@@ -1,15 +1,11 @@
 import { useEffect, useState } from 'react'
-import instance from '~/axios'
-import { companies } from '~/data/companies'
-import { Header2, Header3, Tag, Text } from '~/shared'
+import { Header3, Tag, Text } from '~/shared'
 import Slider from 'react-slick'
 import { Spinner } from 'flowbite-react'
 
 import { fetchFamousCourses } from '~/redux/slices/courses'
-import { AsyncThunkAction, ThunkDispatch } from '@reduxjs/toolkit'
-import { AsyncThunkConfig } from '@reduxjs/toolkit/dist/createAsyncThunk'
+import type { ThunkDispatch } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux'
-import { render } from 'react-dom'
 
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'

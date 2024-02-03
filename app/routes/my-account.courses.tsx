@@ -1,5 +1,4 @@
 import { type V2_MetaFunction } from '@remix-run/node'
-import { useNavigate } from '@remix-run/react'
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { selectIsAuth } from '~/redux/slices/auth'
@@ -10,8 +9,6 @@ export const meta: V2_MetaFunction = () => {
 }
 
 export default function Courses() {
-  const navigate = useNavigate()
-
   const isAuth = useSelector(selectIsAuth)
 
   useEffect(() => {
