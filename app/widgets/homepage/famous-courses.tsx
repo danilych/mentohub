@@ -73,9 +73,9 @@ export function FamousCourses() {
                   <Tag>sql</Tag>
                 </div>
 
-                <Header3 className="mt-4 leading-[26px] text-2xl font-sans font-medium">
+                <p className="mt-4 leading-[26px] text-2xl font-sans font-medium text-[#0F0F10] p-0 m-0 not-italic font-manrope">
                   {course.name}
-                </Header3>
+                </p>
 
                 <Text className="text-[#4e4e51] mt-6">
                   It is test description of the course. It is test description
