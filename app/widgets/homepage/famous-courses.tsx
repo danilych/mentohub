@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import { RatingStar } from 'assets/icons'
+import { Link } from '@remix-run/react'
 
 export function FamousCourses() {
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>()
@@ -56,7 +57,7 @@ export function FamousCourses() {
         <Slider {...settings}>
           {/* @ts-ignore */}
           {courses.items.map((course: any) => (
-            <div>
+            <Link to={`/courses/${course.id}`}>
               <div className="w-[484px] h-[570px] bg-[#F6F6F6] pt-6 rounded-[20px] px-5">
                 <img
                   className="h-[250px] w-[444px] mx-auto rounded-[20px]"
@@ -102,7 +103,7 @@ export function FamousCourses() {
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </Slider>
       )}
