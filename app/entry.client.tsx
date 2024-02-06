@@ -9,9 +9,7 @@ async function hydrate() {
     hydrateRoot(
       document,
       <Provider store={store}>
-        <StrictMode>
           <RemixBrowser />
-        </StrictMode>
       </Provider>
     )
   })
