@@ -26,7 +26,11 @@ export function FamousCourses() {
 
   useEffect(() => {
     if (courses.status === 'loaded') setIsPostLoading(false)
+
+    if (courses.status === 'loading') setIsPostLoading(true)
   })
+
+
 
   const settings = {
     dots: true,
@@ -45,6 +49,7 @@ export function FamousCourses() {
           новеньким
         </Header3>
       </div>
+
       {isPostsLoading ? (
         <div className="w-full h-[570px]">
           <Spinner
@@ -57,7 +62,7 @@ export function FamousCourses() {
         <Slider {...settings}>
           {/* @ts-ignore */}
           {courses.items.map((course: any) => (
-            <Link to={`/courses/${course.id}`}>
+            <Link key={course.id} to={`/courses/${course.id}`}>
               <div className="w-[484px] h-[570px] bg-[#F6F6F6] pt-6 rounded-[20px] px-5">
                 <img
                   className="h-[250px] w-[444px] mx-auto rounded-[20px]"
