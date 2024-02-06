@@ -58,6 +58,8 @@ export default function LoginCard() {
         <div>
           <Text>Електронна пошта</Text>
           <input
+            type="email"
+            autoComplete="email"
             className="mt-2 px-3 text-[#4E4E51] h-[50px] bg-[#F6F6F6] rounded-[50px] outline-none text-sm font-manrope font-normal w-full border-0"
             {...register('Email', { required: 'Enter your name' })}
           />
@@ -66,6 +68,8 @@ export default function LoginCard() {
         <div>
           <Text>Пароль</Text>
           <input
+            type="password"
+            autoComplete="password"
             className="mt-2 px-3 text-[#4E4E51] h-[50px] bg-[#F6F6F6] rounded-[50px] outline-none text-sm font-manrope font-normal w-full border-0"
             {...register('Password', { required: 'Enter your name' })}
           />
