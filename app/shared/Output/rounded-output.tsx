@@ -1,6 +1,5 @@
 import clsx from 'clsx'
 import type { HTMLProps, ReactNode } from 'react'
-import React, { forwardRef, useImperativeHandle, useRef } from 'react'
 
 interface Props extends HTMLProps<HTMLInputElement> {
   className?: string
