@@ -1,10 +1,13 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import moment from 'moment'
 import instance from '~/axios'
 
 export const fetchUser = createAsyncThunk(
   'user/fetchUser',
   async (params: any) => {
     const { data } = await instance.post('/api/user/getUserProfile', params)
+
+    data.dateOfBirth = moment(data.dateOfBirth).format('YYYY-MM-DD')
 
     return data
   }
