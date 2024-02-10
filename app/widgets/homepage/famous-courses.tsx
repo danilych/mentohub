@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Header3, Tag, Text } from '~/shared'
+import { Header3} from '~/shared'
 import Slider from 'react-slick'
 import { Spinner } from 'flowbite-react'
 
@@ -9,8 +9,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import { RatingStar } from 'assets/icons'
-import { Link } from '@remix-run/react'
+import { CourseCard } from '~/entities'
 
 export function FamousCourses() {
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>()
@@ -29,8 +28,6 @@ export function FamousCourses() {
 
     if (courses.status === 'loading') setIsPostLoading(true)
   })
-
-
 
   const settings = {
     dots: true,
@@ -62,53 +59,7 @@ export function FamousCourses() {
         <Slider {...settings}>
           {/* @ts-ignore */}
           {courses.items.map((course: any) => (
-            <Link key={course.id} to={`/courses/${course.id}`}>
-              <div className="w-[484px] h-[570px] bg-[#F6F6F6] pt-6 rounded-[20px] px-5">
-                <img
-                  className="h-[250px] w-[444px] mx-auto rounded-[20px]"
-                  src={
-                    'https://mystudystorage.blob.core.windows.net/test/' +
-                    course.picturePath
-                  }
-                  alt=""
-                />
-
-                <div className="mt-4 flex flex-row gap-[18px]">
-                  <Tag>розробка</Tag>
-                  <Tag>python</Tag>
-                  <Tag>sql</Tag>
-                </div>
-
-                <p className="mt-4 leading-[26px] text-2xl font-sans font-medium text-[#0F0F10] p-0 m-0 not-italic font-manrope">
-                  {course.name}
-                </p>
-
-                <Text className="text-[#4e4e51] mt-6">
-                  It is test description of the course. It is test description
-                  of our course It is I need a lot of text to test the
-                  description of the course. It is test description of our
-                  course It is I need a lot of text to test the description of
-                  the course.
-                </Text>
-
-                <div className="bottom-6 absolute flex flex-row gap-[40px]">
-                  <p className="font-bold text-[#1a1a1b] text-lg font-manrope color-[#161616] p-0 m-0 leading-[22px] not-italic font-manrope">
-                    {course.price + ' UAH'}
-                  </p>
-
-                  <div className="flex flex-row">
-                    <p className="mr-1 font-bold text-[#1a1a1b] text-lg font-manrope color-[#161616] p-0 m-0 leading-[22px] not-italic font-manrope">
-                      {course.rating}
-                    </p>
-
-                    <img className="h-5 w-5" src={RatingStar} alt="" />
-                    <img className="h-5 w-5" src={RatingStar} alt="" />
-                    <img className="h-5 w-5" src={RatingStar} alt="" />
-                    <img className="h-5 w-5" src={RatingStar} alt="" />
-                  </div>
-                </div>
-              </div>
-            </Link>
+            <CourseCard key={course.id} id={course.id} picturePath={course.picturePath} name={course.name} price={course.price} rating={course.rating} />
           ))}
         </Slider>
       )}

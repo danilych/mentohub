@@ -4,7 +4,6 @@ import clsx from 'clsx'
 interface Props {
   children?: ReactNode
   className?: string
-
 }
 
 export function Tag({ children, className }: Props) {
