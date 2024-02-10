@@ -12,17 +12,7 @@ export const fetchUser = createAsyncThunk(
 
 const initialState = {
   user: {
-    userData: {
-        id: "",
-        name: "",
-        email: "",
-        firstName: "",
-        lastName: "",
-        phoneNumber: "",
-        aboutMe: "",
-        enctyptedID: "",
-        dateOfBirth: "",
-    },
+    data: null,
     status: 'loading',
   },
 }
@@ -36,17 +26,17 @@ const userSlice = createSlice({
       state.user.status = 'loading'
 
       // @ts-ignore
-      state.user.userData = null
+      state.user.data = null
     })
     builder.addCase(fetchUser.fulfilled, (state, action) => {
       state.user.status = 'loaded'
-      state.user.userData = action.payload
+      state.user.data = action.payload
     })
     builder.addCase(fetchUser.rejected, (state, action) => {
       state.user.status = 'error'
 
       // @ts-ignore
-      state.user.userData = null
+      state.user.data = null
     })
   },
 })
