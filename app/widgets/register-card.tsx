@@ -41,8 +41,8 @@ export default function RegisterCard() {
       }
 
       window.localStorage.setItem('userId', data.payload.id)
-      window.localStorage.setItem('email', data.payload.email)
-      window.localStorage.setItem('name', data.payload.userName)
+      window.localStorage.setItem('email', values.Email)
+      window.localStorage.setItem('password', values.Password)
     } catch (error) {
       toast.error('Something went wrong!')
     }

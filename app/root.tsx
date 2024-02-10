@@ -1,6 +1,6 @@
 import { cssBundleHref } from '@remix-run/css-bundle'
-import { json} from '@remix-run/node';
-import type { LoaderFunction , LinksFunction } from '@remix-run/node';
+import { json } from '@remix-run/node'
+import type { LoaderFunction, LinksFunction } from '@remix-run/node'
 import {
   Links,
   LiveReload,
@@ -14,8 +14,10 @@ import {
 import stylesheet from '~/tailwind.css'
 import Navigation from './widgets/navigation'
 import Footer from './widgets/footer'
-import store from './redux/store';
-import { Provider } from 'react-redux';
+import store from './redux/store'
+import { Provider, useDispatch } from 'react-redux'
+import type { ThunkDispatch } from '@reduxjs/toolkit'
+import { fetchAuth } from './redux/slices/auth'
 
 export const loader: LoaderFunction = async () => {
   return json({
@@ -34,6 +36,21 @@ export let handle = {
   i18n: 'common',
 }
 
+export function OutletProvider() {
+  const dispatch = useDispatch<ThunkDispatch<any, any, any>>()
+
+  if (typeof window !== 'undefined') {
+    let requestData = {
+      Email: window.localStorage.getItem('email'),
+      Password: window.localStorage.getItem('password'),
+    }
+
+    dispatch(fetchAuth(requestData))
+  }
+
+  return <Outlet />
+}
+
 export default function App() {
   const data = useLoaderData<typeof loader>()
   return (
@@ -47,7 +64,7 @@ export default function App() {
       <body>
         <Provider store={store}>
           <Navigation />
-          <Outlet />
+          <OutletProvider />
           <ScrollRestoration />
           <Scripts />
           <LiveReload />

@@ -41,6 +41,8 @@ export default function LoginCard() {
       console.log(data.payload)
 
       window.localStorage.setItem('userId', data.payload.userID)
+      window.localStorage.setItem('email', values.Email)
+      window.localStorage.setItem('password', values.Password)
     } catch (error) {
       toast.error('Something went wrong!')
     }
