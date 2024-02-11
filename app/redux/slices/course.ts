@@ -50,13 +50,16 @@ const courseSlice = createSlice({
     builder.addCase(fetchCourse.fulfilled, (state, action) => {
       state.course.status = 'loaded'
       state.course.data = action.payload.data
-      state.course.isError = action.payload.isError
     })
     builder.addCase(fetchCourse.rejected, (state, action) => {
       state.course.status = 'error'
 
       // @ts-ignore
       state.course.data = null
+    })
+    builder.addCase(updateBlock.fulfilled, (state, action) => {
+      state.course.status = 'loaded'
+      state.course.isError = action.payload.isError
     })
   },
 })

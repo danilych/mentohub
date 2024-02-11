@@ -2,8 +2,10 @@ import type { ThunkDispatch } from '@reduxjs/toolkit'
 import { useParams } from '@remix-run/react'
 import { Spinner } from 'flowbite-react'
 import { useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form'
+import toast, { Toaster } from 'react-hot-toast'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchCourse } from '~/redux/slices/course'
+import { fetchCourse, updateBlock } from '~/redux/slices/course'
 import {
   Header2,
   Header3,
@@ -15,12 +17,23 @@ import {
 export default function Course() {
   const params = useParams()
 
+  const { register, handleSubmit } = useForm({
+    defaultValues: {
+      Name: '',
+      ID: '-1',
+      CourseID: params.course as string,
+    },
+    mode: 'onChange',
+  })
+
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>()
 
   // @ts-ignore
   const { course } = useSelector(state => state.course)
 
   const [isPostsLoading, setIsPostLoading] = useState(true)
+
+  console.log(course.data)
 
   useEffect(() => {
     let formData = new FormData()
@@ -35,7 +48,27 @@ export default function Course() {
     if (course.status === 'loaded') setIsPostLoading(false)
 
     if (course.status === 'loading') setIsPostLoading(true)
+
+    if (course.status === 'error') setIsPostLoading(true)
   })
+
+  const onSubmit = async (values: any) => {
+    try {
+      const data = await dispatch(updateBlock(values))
+
+      if (data.payload && data.payload.isError == false) {
+        console.log(true)
+
+        toast.success('Block was successfully created!')
+      } else {
+        toast.error('Something went wrong!')
+
+        return
+      }
+    } catch (error) {
+      toast.error('Something went wrong!')
+    }
+  }
 
   return (
     <div className="w-[1500px] min-h-screen py-12 my-[56px] mx-auto">
@@ -65,18 +98,43 @@ export default function Course() {
           <div>
             <Header4 className="ml-4">Додайти інформаційний блок</Header4>
 
-            <div className="mt-2 flex flex-row gap-[26px]">
-              <RoundedInput placeholder="Назва розділу" className="w-[656px]" />
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="mt-2 flex flex-row gap-[26px]"
+            >
+              <input
+              placeholder='Назва розділу'
+                className="pl-9 text-[#4E4E51] w-[656px] h-[50px] bg-[#F6F6F6] rounded-[50px] outline-none text-sm font-manrope font-normal border-0"
+                {...register('Name', { required: 'Enter name' })}
+              />
 
               <div className=" w-[310px]">
                 <TransparentButton className="text-[#454BE9]">
                   Додати
                 </TransparentButton>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       )}
+
+      <Toaster
+        toastOptions={{
+          duration: 5000,
+          success: {
+            style: {
+              background: 'green',
+              color: 'white',
+            },
+          },
+          error: {
+            style: {
+              background: 'red',
+              color: 'white',
+            },
+          },
+        }}
+      />
     </div>
   )
 }
