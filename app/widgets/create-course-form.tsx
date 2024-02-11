@@ -1,4 +1,4 @@
-import { AddImageCover } from 'assets/images'
+import { AddImageCover, AddVideoCover } from 'assets/images'
 import { useRef, useState } from 'react'
 import {
   FilledButton,
@@ -155,7 +155,7 @@ export function CreateCourseForm() {
         />
 
         <button type="button" onClick={() => inputVideoRef.current?.click()}>
-          <img src={AddImageCover} alt="Add image" />
+          <img src={AddVideoCover} alt="Add image" />
         </button>
       </div>
 

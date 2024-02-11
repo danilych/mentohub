@@ -1,4 +1,4 @@
-import { ThunkDispatch } from '@reduxjs/toolkit'
+import type { ThunkDispatch } from '@reduxjs/toolkit'
 import { type V2_MetaFunction } from '@remix-run/node'
 import { Spinner } from 'flowbite-react'
 import { useEffect, useState } from 'react'

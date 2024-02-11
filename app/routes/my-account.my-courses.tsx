@@ -1,4 +1,4 @@
-import { ThunkDispatch } from '@reduxjs/toolkit'
+import type { ThunkDispatch } from '@reduxjs/toolkit'
 import { type V2_MetaFunction } from '@remix-run/node'
 import { Link } from '@remix-run/react'
 import { AddCourseCard } from 'assets/images'
