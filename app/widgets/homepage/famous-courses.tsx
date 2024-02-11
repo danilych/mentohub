@@ -56,7 +56,7 @@ export function FamousCourses() {
           />
         </div>
       ) : (
-        <Slider {...settings}>
+        <Slider className='w-[1500px] mx-auto' {...settings}>
           {/* @ts-ignore */}
           {courses.items.map((course: any) => (
             <CourseCard key={course.id} id={course.id} picturePath={course.picturePath} name={course.name} price={course.price} rating={course.rating} />
