@@ -7,6 +7,7 @@ import toast from 'react-hot-toast'
 import { removeBlock } from '~/redux/slices/course'
 import { delay } from '~/widgets/helpers/delay'
 import { ToasterWithOptions, TransparentButton } from '~/shared'
+import { Link } from '@remix-run/react'
 
 interface Props {
   header: string
@@ -16,7 +17,13 @@ interface Props {
   items: any
 }
 
-export function HiddenListComponent({ header, index, className, id, items }: Props) {
+export function HiddenListComponent({
+  header,
+  index,
+  className,
+  id,
+  items,
+}: Props) {
   const [isVisibly, setVisibly] = useState(false)
 
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>()
@@ -27,12 +34,10 @@ export function HiddenListComponent({ header, index, className, id, items }: Pro
 
   const onClickRemove = async (id: string) => {
     try {
-      let requestData = new FormData();
-      requestData.append('blockID', id);
+      let requestData = new FormData()
+      requestData.append('blockID', id)
 
-      const data = await dispatch(
-        removeBlock(requestData)
-      )
+      const data = await dispatch(removeBlock(requestData))
 
       if (data.payload && data.payload.isError == false) {
         console.log(true)
@@ -86,15 +91,25 @@ export function HiddenListComponent({ header, index, className, id, items }: Pro
         )}
       >
         {items.map((item: any, index: number) => (
-          <div key={index} className='bg-[#D9D9D9] py-3 pl-7 mt-1'>
-            <p className='text-manrope font-normal text-base text-[#1a1a1b]'>{item.elementName}</p>
+          <div key={index} className="bg-[#D9D9D9] py-3 pl-7 mt-1">
+            <p className="text-manrope font-normal text-base text-[#1a1a1b]">
+              {item.elementName}
+            </p>
           </div>
         ))}
 
-        <div className='mt-2 flex flex-row gap-9'>
-          <TransparentButton className='border-[#D4D4D4]'>Додати урок</TransparentButton>
+        <div className="mt-2 flex flex-row gap-9">
+          <Link className='w-[310px]' to={`/edit-course/create-lesson/${id}`}>
+            <TransparentButton className="border-[#D4D4D4]">
+              Додати урок
+            </TransparentButton>
+          </Link>
 
-          <TransparentButton className='border-[#D4D4D4]'>Додати тест</TransparentButton>
+          <Link className='w-[310px]' to="/">
+            <TransparentButton className="border-[#D4D4D4]">
+              Додати тест
+            </TransparentButton>
+          </Link>
         </div>
       </div>
 
