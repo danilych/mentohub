@@ -1,10 +1,10 @@
-import { Text, FilledButton } from '~/shared'
+import { Text, FilledButton, ToasterWithOptions } from '~/shared'
 import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import { fetchRegister } from '~/redux/slices/auth'
 import type { ThunkDispatch } from '@reduxjs/toolkit'
 import { useNavigate } from '@remix-run/react'
-import toast, { Toaster } from 'react-hot-toast'
+import toast from 'react-hot-toast'
 import { delay } from './helpers/delay'
 
 export default function RegisterCard() {
@@ -105,23 +105,8 @@ export default function RegisterCard() {
           <p className=" text-white text-2xl">Зареєструвати</p>
         </FilledButton>
       </div>
-      <Toaster
-        toastOptions={{
-          duration: 5000,
-          success: {
-            style: {
-              background: 'green',
-              color: 'white',
-            },
-          },
-          error: {
-            style: {
-              background: 'red',
-              color: 'white',
-            },
-          },
-        }}
-      />
+      
+      <ToasterWithOptions />
     </form>
   )
 }

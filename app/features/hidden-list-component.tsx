@@ -1,11 +1,12 @@
 import clsx from 'clsx'
 import { useState } from 'react'
-import { Arrow, DeleteIcon, EditIcon } from 'assets/icons'
+import { DeleteIcon, EditIcon } from 'assets/icons'
 import { useDispatch } from 'react-redux'
-import { ThunkDispatch } from '@reduxjs/toolkit'
-import toast, { Toaster } from 'react-hot-toast'
+import type { ThunkDispatch } from '@reduxjs/toolkit'
+import toast from 'react-hot-toast'
 import { removeBlock } from '~/redux/slices/course'
 import { delay } from '~/widgets/helpers/delay'
+import { ToasterWithOptions } from '~/shared'
 
 interface Props {
   header: string
@@ -88,23 +89,7 @@ export function HiddenListComponent({ header, index, className, id }: Props) {
         </p>
       </div>
 
-      <Toaster
-        toastOptions={{
-          duration: 5000,
-          success: {
-            style: {
-              background: 'green',
-              color: 'white',
-            },
-          },
-          error: {
-            style: {
-              background: 'red',
-              color: 'white',
-            },
-          },
-        }}
-      />
+      <ToasterWithOptions />
     </div>
   )
 }

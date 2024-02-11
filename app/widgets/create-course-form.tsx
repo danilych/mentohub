@@ -4,6 +4,7 @@ import {
   FilledButton,
   Header3,
   Text,
+  ToasterWithOptions,
 } from '~/shared'
 import clsx from 'clsx'
 import { useDispatch } from 'react-redux'
@@ -11,7 +12,7 @@ import type { ThunkDispatch } from '@reduxjs/toolkit'
 import { useForm } from 'react-hook-form'
 import { objectToFormData } from './helpers/object-to-form-data'
 import { createCourse } from '~/redux/slices/courses'
-import toast, { Toaster } from 'react-hot-toast'
+import toast from 'react-hot-toast'
 import { delay } from './helpers/delay'
 import { useNavigate } from '@remix-run/react'
 
@@ -302,23 +303,7 @@ export function CreateCourseForm() {
         <p className="text-white w-[216px] text-2xl">Створити</p>
       </FilledButton>
 
-      <Toaster
-        toastOptions={{
-          duration: 5000,
-          success: {
-            style: {
-              background: 'green',
-              color: 'white',
-            },
-          },
-          error: {
-            style: {
-              background: 'red',
-              color: 'white',
-            },
-          },
-        }}
-      />
+      <ToasterWithOptions />
     </form>
   )
 }

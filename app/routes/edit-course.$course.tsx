@@ -3,13 +3,12 @@ import { useParams } from '@remix-run/react'
 import { Spinner } from 'flowbite-react'
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import toast, { Toaster } from 'react-hot-toast'
+import toast from 'react-hot-toast'
 import { useDispatch, useSelector } from 'react-redux'
 import { HiddenListComponent } from '~/features'
 import { fetchCourse, updateBlock } from '~/redux/slices/course'
-import { Header2, Header3, Header4, TransparentButton } from '~/shared'
+import { Header3, Header4, ToasterWithOptions, TransparentButton } from '~/shared'
 import { delay } from '~/widgets/helpers/delay'
-// import { delay } from '~/widgets/helpers/delay'
 
 export default function Course() {
   const params = useParams()
@@ -134,23 +133,7 @@ export default function Course() {
         </div>
       )}
 
-      <Toaster
-        toastOptions={{
-          duration: 5000,
-          success: {
-            style: {
-              background: 'green',
-              color: 'white',
-            },
-          },
-          error: {
-            style: {
-              background: 'red',
-              color: 'white',
-            },
-          },
-        }}
-      />
+      <ToasterWithOptions />
     </div>
   )
 }
