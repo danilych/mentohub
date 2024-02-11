@@ -63,6 +63,7 @@ export default function MyCourses() {
           {/* @ts-ignore */}
           {courses.items.map((course: any) => (
             <CourseCard
+              isForEdit={true}
               key={course.id}
               id={course.id}
               picturePath={course.picturePath}
