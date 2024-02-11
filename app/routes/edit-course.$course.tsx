@@ -5,14 +5,11 @@ import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import toast, { Toaster } from 'react-hot-toast'
 import { useDispatch, useSelector } from 'react-redux'
+import { HiddenListComponent } from '~/features'
 import { fetchCourse, updateBlock } from '~/redux/slices/course'
-import {
-  Header2,
-  Header3,
-  Header4,
-  RoundedInput,
-  TransparentButton,
-} from '~/shared'
+import { Header2, Header3, Header4, TransparentButton } from '~/shared'
+import { delay } from '~/widgets/helpers/delay'
+// import { delay } from '~/widgets/helpers/delay'
 
 export default function Course() {
   const params = useParams()
@@ -60,6 +57,10 @@ export default function Course() {
         console.log(true)
 
         toast.success('Block was successfully created!')
+
+        delay(2000)
+
+        window.location.reload()
       } else {
         toast.error('Something went wrong!')
 
@@ -103,7 +104,7 @@ export default function Course() {
               className="mt-2 flex flex-row gap-[26px]"
             >
               <input
-              placeholder='Назва розділу'
+                placeholder="Назва розділу"
                 className="pl-9 text-[#4E4E51] w-[656px] h-[50px] bg-[#F6F6F6] rounded-[50px] outline-none text-sm font-manrope font-normal border-0"
                 {...register('Name', { required: 'Enter name' })}
               />
@@ -114,6 +115,21 @@ export default function Course() {
                 </TransparentButton>
               </div>
             </form>
+
+            <div className="mt-6">
+              {/* ts-ignore */}
+              {course.data.courseElementsList.map(
+                (element: any, index: number) => (
+                  <div className="w-[656px] mt-4">
+                    <HiddenListComponent
+                      id={element.id}
+                      header={element.name}
+                      index={index + 1}
+                    />
+                  </div>
+                )
+              )}
+            </div>
           </div>
         </div>
       )}

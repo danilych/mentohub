@@ -28,6 +28,15 @@ export const updateBlock = createAsyncThunk(
   }
 )
 
+export const removeBlock = createAsyncThunk(
+    'course/removeBlock',
+    async (params: any) => {
+      const { data } = await instance.post('/CourseBlock/Delete', params)
+  
+      return data
+    }
+  )
+
 const initialState = {
   course: {
     data: null,
@@ -61,6 +70,10 @@ const courseSlice = createSlice({
       state.course.status = 'loaded'
       state.course.isError = action.payload.isError
     })
+    builder.addCase(removeBlock.fulfilled, (state, action) => {
+        state.course.status = 'loaded'
+        state.course.isError = action.payload.isError
+      })
   },
 })
 
