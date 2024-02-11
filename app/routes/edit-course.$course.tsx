@@ -7,7 +7,12 @@ import toast from 'react-hot-toast'
 import { useDispatch, useSelector } from 'react-redux'
 import { HiddenListComponent } from '~/features'
 import { fetchCourse, updateBlock } from '~/redux/slices/course'
-import { Header3, Header4, ToasterWithOptions, TransparentButton } from '~/shared'
+import {
+  Header3,
+  Header4,
+  ToasterWithOptions,
+  TransparentButton,
+} from '~/shared'
 import { delay } from '~/widgets/helpers/delay'
 
 export default function Course() {
@@ -119,8 +124,9 @@ export default function Course() {
               {/* ts-ignore */}
               {course.data.courseElementsList.map(
                 (element: any, index: number) => (
-                  <div className="w-[656px] mt-4">
+                  <div key={index} className="w-[656px] mt-4">
                     <HiddenListComponent
+                      items={element.courseItems}
                       id={element.id}
                       header={element.name}
                       index={index + 1}

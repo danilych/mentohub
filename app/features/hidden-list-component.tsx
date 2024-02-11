@@ -6,16 +6,17 @@ import type { ThunkDispatch } from '@reduxjs/toolkit'
 import toast from 'react-hot-toast'
 import { removeBlock } from '~/redux/slices/course'
 import { delay } from '~/widgets/helpers/delay'
-import { ToasterWithOptions } from '~/shared'
+import { ToasterWithOptions, TransparentButton } from '~/shared'
 
 interface Props {
   header: string
   index: number
   id: string
   className?: string
+  items: any
 }
 
-export function HiddenListComponent({ header, index, className, id }: Props) {
+export function HiddenListComponent({ header, index, className, id, items }: Props) {
   const [isVisibly, setVisibly] = useState(false)
 
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>()
@@ -80,13 +81,21 @@ export function HiddenListComponent({ header, index, className, id }: Props) {
       </div>
       <div
         className={clsx(
-          ' duration-1400 transition-all ease-in-out',
+          ' duration-1400 transition-all ease-in-out flex flex-col gap-2',
           isVisibly ? 'max-h-72' : 'max-h-0 overflow-hidden'
         )}
       >
-        <p className="font-manrope text-[#1A1A1B] leading-[30px] font-normal mt-8 text-base">
-          ergkmeriojgierjgioerjgiouerghjreuhgou
-        </p>
+        {items.map((item: any, index: number) => (
+          <div key={index} className='bg-[#D9D9D9] py-3 pl-7 mt-1'>
+            <p className='text-manrope font-normal text-base text-[#1a1a1b]'>{item.elementName}</p>
+          </div>
+        ))}
+
+        <div className='mt-2 flex flex-row gap-9'>
+          <TransparentButton className='border-[#D4D4D4]'>Додати урок</TransparentButton>
+
+          <TransparentButton className='border-[#D4D4D4]'>Додати тест</TransparentButton>
+        </div>
       </div>
 
       <ToasterWithOptions />
