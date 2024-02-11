@@ -13,7 +13,7 @@ interface Props {
 export function CourseCard({ id, picturePath, name, price, rating }: Props) {
   return (
     <Link to={`/courses/${id}`}>
-      <div className="w-[484px] h-[570px] bg-[#F6F6F6] pt-6 rounded-[20px] px-5">
+      <div className="w-[484px] relative h-[570px] bg-[#F6F6F6] pt-6 rounded-[20px] px-5">
         <img
           className="h-[250px] w-[444px] mx-auto rounded-[20px]"
           src={

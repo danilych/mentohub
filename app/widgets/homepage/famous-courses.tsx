@@ -17,16 +17,16 @@ export function FamousCourses() {
   // @ts-ignore
   const { courses } = useSelector(state => state.courses)
 
-  const [isPostsLoading, setIsPostLoading] = useState(true)
+  const [isCoursesLoading, setIsCoursesLoading] = useState(true)
 
   useEffect(() => {
     dispatch(fetchFamousCourses())
   }, [])
 
   useEffect(() => {
-    if (courses.status === 'loaded') setIsPostLoading(false)
+    if (courses.status === 'loaded') setIsCoursesLoading(false)
 
-    if (courses.status === 'loading') setIsPostLoading(true)
+    if (courses.status === 'loading') setIsCoursesLoading(true)
   })
 
   const settings = {
@@ -47,7 +47,7 @@ export function FamousCourses() {
         </Header3>
       </div>
 
-      {isPostsLoading ? (
+      {isCoursesLoading ? (
         <div className="w-full h-[570px]">
           <Spinner
             className="absolute top-1/2 left-1/2 mt-[-50px] ml-[-50px]"

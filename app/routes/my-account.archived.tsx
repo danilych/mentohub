@@ -18,7 +18,7 @@ export default function Archived() {
   }, [])
 
   return (
-    <div className="bg-white pb-[92px] mt-[68px]">
+    <div className="bg-white min-h-screen pb-[92px] mt-[68px]">
       <AccountMenu page="archived" />
     </div>
   )
