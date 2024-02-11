@@ -37,6 +37,15 @@ export const fetchBoughtCourse = createAsyncThunk(
   }
 )
 
+export const fetchAuthorCourse = createAsyncThunk(
+  'course/fetchAuthorCourse',
+  async (params: any) => {
+    const { data } = await instance.post('/api/user/GetAuthorsCourses', params)
+
+    return data
+  }
+)
+
 const initialState = {
   courses: {
     items: [],
@@ -92,6 +101,22 @@ const coursesSlice = createSlice({
       state.courses.items = action.payload
     })
     builder.addCase(fetchBoughtCourse.rejected, (state, action) => {
+      state.courses.status = 'error'
+
+      // @ts-ignore
+      state.courses.items = null
+    })
+    builder.addCase(fetchAuthorCourse.pending, (state, action) => {
+      state.courses.status = 'loading'
+
+      // @ts-ignore
+      state.courses.items = null
+    })
+    builder.addCase(fetchAuthorCourse.fulfilled, (state, action) => {
+      state.courses.status = 'loaded'
+      state.courses.items = action.payload.data
+    })
+    builder.addCase(fetchAuthorCourse.rejected, (state, action) => {
       state.courses.status = 'error'
 
       // @ts-ignore
