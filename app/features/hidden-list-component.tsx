@@ -87,7 +87,7 @@ export function HiddenListComponent({
       <div
         className={clsx(
           ' duration-1400 transition-all ease-in-out flex flex-col gap-2',
-          isVisibly ? 'max-h-72' : 'max-h-0 overflow-hidden'
+          isVisibly ? '' : 'max-h-0 overflow-hidden'
         )}
       >
         {items.map((item: any, index: number) => (

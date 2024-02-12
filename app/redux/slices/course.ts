@@ -19,6 +19,15 @@ export const fetchCourse = createAsyncThunk(
   }
 )
 
+export const fetchFullCourse = createAsyncThunk(
+  'course/fetchFullCourse',
+  async (params: any) => {
+    const { data } = await instance.post('/Course/GetCourseInfoList', params)
+
+    return data
+  }
+)
+
 export const updateBlock = createAsyncThunk(
   'course/updateBlock',
   async (params: any) => {
@@ -70,6 +79,22 @@ const courseSlice = createSlice({
       state.course.data = action.payload.data
     })
     builder.addCase(fetchCourse.rejected, (state, action) => {
+      state.course.status = 'error'
+
+      // @ts-ignore
+      state.course.data = null
+    })
+    builder.addCase(fetchFullCourse.pending, (state, action) => {
+      state.course.status = 'loading'
+
+      // @ts-ignore
+      state.course.data = null
+    })
+    builder.addCase(fetchFullCourse.fulfilled, (state, action) => {
+      state.course.status = 'loaded'
+      state.course.data = action.payload
+    })
+    builder.addCase(fetchFullCourse.rejected, (state, action) => {
       state.course.status = 'error'
 
       // @ts-ignore

@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 import { useDispatch, useSelector } from 'react-redux'
 import { HiddenListComponent } from '~/features'
-import { fetchCourse, updateBlock } from '~/redux/slices/course'
+import { fetchCourse, fetchFullCourse, updateBlock } from '~/redux/slices/course'
 import {
   Header3,
   Header4,
@@ -38,11 +38,11 @@ export default function Course() {
 
   useEffect(() => {
     let formData = new FormData()
-    formData.append('CourseID', params.course as string)
+    formData.append('ID', params.course as string)
     console.log(params.course)
     // formData.append('UserID', window.localStorage.getItem("userId") as string)
 
-    dispatch(fetchCourse(formData))
+    dispatch(fetchFullCourse(formData))
   }, [])
 
   useEffect(() => {
