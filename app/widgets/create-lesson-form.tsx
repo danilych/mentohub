@@ -59,7 +59,7 @@ export function CreateLessonForm({ id }: Props) {
 
       await delay(3000)
 
-      navigate('/my-account/my-courses')
+      navigate(`/edit-course/${course.data.id!}`)
     } else {
       toast.error(data.payload.message)
     }
