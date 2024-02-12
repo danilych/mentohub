@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 import { useDispatch, useSelector } from 'react-redux'
 import { HiddenListComponent } from '~/features'
-import { fetchCourse, fetchFullCourse, updateBlock } from '~/redux/slices/course'
+import { fetchFullCourse, updateBlock } from '~/redux/slices/course'
 import {
   Header3,
   Header4,
