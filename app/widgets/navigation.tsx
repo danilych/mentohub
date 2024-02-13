@@ -6,13 +6,19 @@ import { useSelector } from 'react-redux'
 import { selectIsAuth } from '~/redux/slices/auth'
 import { Dropdown } from 'flowbite-react'
 import { useEffect } from 'react'
+import { categories } from '~/data/navigation'
 
 export default function Navigation() {
   const isAuth = useSelector(selectIsAuth)
 
-  useEffect(() => {
-    
-  }, [])
+  useEffect(() => {}, [])
+
+  async function storeCategory(id: any, value: any) {
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem('CategoryID', id)
+      window.localStorage.setItem('categoryValue', value)
+    }
+  }
 
   console.log('isAuth: ', isAuth)
   return (
@@ -32,8 +38,15 @@ export default function Navigation() {
           }
           inline
         >
-          <Dropdown.Item href="#">Українська</Dropdown.Item>
-          <Dropdown.Item href="#">Англійська</Dropdown.Item>
+          {categories.map((category, index) => (
+            <Dropdown.Item
+              key={index}
+              onClick={() => storeCategory(category.key, category.value)}
+              href="/courses"
+            >
+              {category.value}
+            </Dropdown.Item>
+          ))}
         </Dropdown>
 
         <form className="w-[431px] border-b-[1.5px] flex flex-row gap-3 pb-1 border-[#B5B7F6]">

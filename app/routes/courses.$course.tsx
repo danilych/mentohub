@@ -36,7 +36,7 @@ export default function Course() {
 
     if (course.data != null) {
       let authorFormData = new FormData()
-      authorFormData.append('encriptId', (course.data.authorId).toString() as string)
+      authorFormData.append('encriptId', course.data.authorEncryptedId as string)
 
       dispatch(fetchAuthor(authorFormData))
     }

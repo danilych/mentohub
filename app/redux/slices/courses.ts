@@ -46,6 +46,15 @@ export const fetchAuthorCourse = createAsyncThunk(
   }
 )
 
+export const searchCourses = createAsyncThunk(
+  'course/searchCourses',
+  async (params: any) => {
+    const { data } = await instance.post('/Course/Table', params)
+
+    return data
+  }
+)
+
 const initialState = {
   courses: {
     items: [],
@@ -117,6 +126,22 @@ const coursesSlice = createSlice({
       state.courses.items = action.payload.data
     })
     builder.addCase(fetchAuthorCourse.rejected, (state, action) => {
+      state.courses.status = 'error'
+
+      // @ts-ignore
+      state.courses.items = null
+    })
+    builder.addCase(searchCourses.pending, (state, action) => {
+      state.courses.status = 'loading'
+
+      // @ts-ignore
+      state.courses.items = null
+    })
+    builder.addCase(searchCourses.fulfilled, (state, action) => {
+      state.courses.status = 'loaded'
+      state.courses.items = action.payload.data.courses
+    })
+    builder.addCase(searchCourses.rejected, (state, action) => {
       state.courses.status = 'error'
 
       // @ts-ignore
