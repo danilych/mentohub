@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { whatYouWillLearn } from '~/data/view-course'
 import { ListElement } from '~/features'
 import { CourseElement } from '~/features/course-element'
+import { fetchAuthor } from '~/redux/slices/author'
 import { fetchCourse } from '~/redux/slices/courses'
 import { fetchUser } from '~/redux/slices/user'
 import { FilledButton, Header2, Header3, Header4, Text } from '~/shared'
@@ -26,14 +27,19 @@ export default function Course() {
     formData.append('CourseID', params.course as string)
     formData.append('UserID', window.localStorage.getItem('userId') as string)
     dispatch(fetchCourse(formData))
-
-
   }, [])
 
   useEffect(() => {
     if (course.status === 'loading') setIsPostLoading(true)
 
     if (course.status === 'loaded') setIsPostLoading(false)
+
+    if (course.data != null) {
+      let authorFormData = new FormData()
+      authorFormData.append('encriptId', (course.data.authorId).toString() as string)
+
+      dispatch(fetchAuthor(authorFormData))
+    }
   })
 
   return (
@@ -129,8 +135,8 @@ export default function Course() {
             <div className="mt-[92px] w-[1200px]">
               <Header3>Ваш викладач</Header3>
 
-              <div className='flex flex-row gap-[42px]'>
-                    <img src="" alt="" />
+              <div className="flex flex-row gap-[42px]">
+                <img src="" alt="" />
               </div>
             </div>
           </div>
