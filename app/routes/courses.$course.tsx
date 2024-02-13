@@ -24,7 +24,6 @@ export default function Course() {
   useEffect(() => {
     let formData = new FormData()
     formData.append('CourseID', params.course as string)
-    formData.append('UserID', window.localStorage.getItem('userId') as string)
     dispatch(fetchCourse(formData))
 
     window.localStorage.getItem('lectureID')
