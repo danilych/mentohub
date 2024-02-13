@@ -54,10 +54,17 @@ export default function Courses() {
         </div>
       ) : (
         <div className="mt-[42px] w-[1500px] mx-auto grid grid-cols-3 gap-2">
-
           {/* @ts-ignore */}
           {courses.items.map((course: any) => (
-            <CourseCard key={course.id} id={course.id} picturePath={course.picturePath} name={course.name} price={course.price} rating={course.rating} />
+            <CourseCard
+              isBought={true}
+              key={course.id}
+              id={course.id}
+              picturePath={course.picturePath}
+              name={course.name}
+              price={course.price}
+              rating={course.rating}
+            />
           ))}
         </div>
       )}

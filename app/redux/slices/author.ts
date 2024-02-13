@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import moment from 'moment'
 import instance from '~/axios'
 
 export const fetchAuthor = createAsyncThunk(

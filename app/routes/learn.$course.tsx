@@ -1,15 +1,12 @@
 import type { ThunkDispatch } from '@reduxjs/toolkit'
 import { useParams } from '@remix-run/react'
-import { ViewCourseImage } from 'assets/images'
 import { Spinner } from 'flowbite-react'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { whatYouWillLearn } from '~/data/view-course'
-import { ListElement } from '~/features'
 import { CourseElement } from '~/features/course-element'
 import { fetchAuthor } from '~/redux/slices/author'
-import { fetchCourse } from '~/redux/slices/courses'
-import { FilledButton, Header2, Header3, Header4, Text } from '~/shared'
+import { fetchFullCourse } from '~/redux/slices/course'
+import { Header2, Header3, Header4, Text } from '~/shared'
 
 export default function Course() {
   const params = useParams()
@@ -18,17 +15,23 @@ export default function Course() {
 
   // @ts-ignore
   const { course } = useSelector(state => state.course)
+    // @ts-ignore
+  const { lesson } = useSelector(state => state.lesson)
 
   const [isPostsLoading, setIsPostLoading] = useState(true)
 
   useEffect(() => {
     let formData = new FormData()
-    formData.append('CourseID', params.course as string)
-    formData.append('UserID', window.localStorage.getItem('userId') as string)
-    dispatch(fetchCourse(formData))
+    formData.append('ID', params.course as string)
+    // formData.append('ID', window.localStorage.getItem('userId') as string)
+    dispatch(fetchFullCourse(formData))
 
-    window.localStorage.getItem('lectureID')
+    // setVideoPath(course.data.courseElementList[0].courseItems[0].videoPath)
+    console.log('dataview', course.data)
   }, [])
+
+  if(lesson.data != null) console.log("lesson",lesson.data.videoPath!)
+//   console.log("lesson",lesson.data.videoPath!)
 
   useEffect(() => {
     if (course.status === 'loading') setIsPostLoading(true)
@@ -37,7 +40,10 @@ export default function Course() {
 
     if (course.data != null) {
       let authorFormData = new FormData()
-      authorFormData.append('encriptId', (course.data.authorId).toString() as string)
+      authorFormData.append(
+        'encriptId',
+        course.data.authorId.toString() as string
+      )
 
       dispatch(fetchAuthor(authorFormData))
     }
@@ -75,41 +81,6 @@ export default function Course() {
               <Text className="mt-4 max-w-[738px]">
                 {course.data.description}
               </Text>
-
-              <div className="inline-block mt-9">
-                <Header4 className="inline-block">Вартість курсу</Header4>
-
-                <Header4 className="inline-block  pl-2 text-[#454be9]">
-                  {course.data.price} грн
-                </Header4>
-
-                <FilledButton className="ml-[266px] h-[47px] py-[10px] text-white">
-                  Придбати
-                </FilledButton>
-              </div>
-            </div>
-
-            <div className="mt-[92px]">
-              <Header3>Чому ви навчитесь</Header3>
-
-              <div className="flex flex-row gap-[40px] mt-6">
-                <img
-                  className="w-[357px] h-[428px]"
-                  src={ViewCourseImage}
-                  alt=""
-                />
-
-                <div className="flex flex-col gap-[56px]">
-                  {whatYouWillLearn.map((item, index) => (
-                    <ListElement
-                      key={index}
-                      index={index + 1}
-                      header={item.title}
-                      text={item.text}
-                    />
-                  ))}
-                </div>
-              </div>
             </div>
 
             <div className="w-[992px] mt-[92px]">
@@ -121,6 +92,7 @@ export default function Course() {
                   (element: any, index: number) => (
                     <div key={index} className="w-[992px] mt-4">
                       <CourseElement
+                        isUpdateId={true}
                         lecturesCount={element.lessonsCount}
                         items={element.courseItems}
                         id={element.id}

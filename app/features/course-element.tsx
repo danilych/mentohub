@@ -1,13 +1,10 @@
 import clsx from 'clsx'
 import { useState } from 'react'
-import { DeleteIcon, EditIcon } from 'assets/icons'
 import { useDispatch } from 'react-redux'
 import type { ThunkDispatch } from '@reduxjs/toolkit'
-import toast from 'react-hot-toast'
-import { removeBlock } from '~/redux/slices/course'
-import { delay } from '~/widgets/helpers/delay'
-import { ToasterWithOptions, TransparentButton } from '~/shared'
-import { Link } from '@remix-run/react'
+import { ToasterWithOptions } from '~/shared'
+import { useNavigate } from '@remix-run/react'
+import { fetchLesson } from '~/redux/slices/lesson'
 
 interface Props {
   header: string
@@ -16,6 +13,7 @@ interface Props {
   className?: string
   items: any
   lecturesCount: string
+  isUpdateId?: boolean
 }
 
 export function CourseElement({
@@ -25,11 +23,29 @@ export function CourseElement({
   id,
   items,
   lecturesCount,
+  isUpdateId
 }: Props) {
   const [isVisibly, setVisibly] = useState(false)
 
+  const dispatch = useDispatch<ThunkDispatch<any, any, any>>()
+
+  const navigate = useNavigate()
+
   function changeVisibly() {
     setVisibly(!isVisibly)
+  }
+
+  function setVideoPath(id_: string) {
+    console.log("bebra")
+    window.localStorage.setItem('lectureId', id_)
+
+    if(isUpdateId) {
+        let requestData = new FormData()    
+        requestData.append('courseItemId', id_)
+        dispatch(fetchLesson(requestData))
+
+        navigate(`/learn/lesson/${id_}`)
+    }
   }
 
   return (
@@ -64,7 +80,7 @@ export function CourseElement({
         )}
       >
         {items.map((item: any, index: number) => (
-          <div key={index} className="py-3 pl-7 mt-1">
+          <div onClick={() => setVideoPath(item.courseItemId)} key={index} className="py-3 pl-7 mt-1">
             <p className="text-manrope font-normal text-base text-[#1a1a1b]">
               {item.elementName}
             </p>

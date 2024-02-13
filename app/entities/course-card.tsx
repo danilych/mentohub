@@ -14,7 +14,7 @@ interface Props {
 
 export function CourseCard({ id, picturePath, name, price, rating, isBought, isForEdit }: Props) {
   return (
-    <Link to={isBought ? `/` : isForEdit ? `/edit-course/${id}` : `/courses/${id}`}>
+    <Link to={isBought ? `/learn/${id}` : isForEdit ? `/edit-course/${id}` : `/courses/${id}`}>
       <div className="w-[484px] relative h-[570px] bg-[#F6F6F6] pt-6 rounded-[20px] px-5">
         <img
           className="h-[250px] w-[444px] mx-auto rounded-[20px]"
